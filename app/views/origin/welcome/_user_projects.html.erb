@@ -1,0 +1,7 @@
+<div>
+  <h2>Projects:</h2>
+  <% projects = Project.where(user_id: get_user.id).to_a %>
+  <% projects.each do |p| %>
+    <%= p.name %><p>
+  <% end %>
+</div>

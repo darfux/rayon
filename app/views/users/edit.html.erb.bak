@@ -1,0 +1,7 @@
+<h1>Editing user</h1>
+
+<%= render 'form' %>
+
+<% save_referer %>
+<%= link_to 'Show', @user %> |
+<%= link_to 'Back', :back %>

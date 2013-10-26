@@ -1,0 +1,8 @@
+<h1>Welcome</h1>
+<div class="user">
+	<%= render @user %>
+</div>
+<!-- <%= render 'user_projects' %> -->
+<%= button_to 'Manage ', manage_path, :method => :get %>
+<%= link_to 'Search', search_path %><br/> 
+<%= link_to 'Logout', logout_path, :method => :delete, data: {confirm: 'Are you sure to logout?'}%> 

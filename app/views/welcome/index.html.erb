@@ -1,0 +1,44 @@
+<head>
+		<title>对口支援特色联合科研平台</title>
+	</head>
+	<body>
+		<div id="test" class="p9">			<!--窗口顶部div,同前-->
+			<br>
+			<font size="5" color="white">对口支援特色联合科研平台</font>	<!--显示标题-->
+			<br>
+			<div align="right" class="p9">
+				<font size="2" color="black">欢迎<%= @user.uid %>回来！</font>				<!--显示账户信息-->
+				<%= link_to '首页', welcome_path%>
+				<%= link_to '退出', logout_path, :method => :delete%>
+			</div>
+		</div>
+			<div class="p14">					<!--窗口中部左侧div-->
+				<div id="user_info">
+					<%= render @user %>
+				</div>
+			<br><br><br>
+			<p class="p6" align="center">
+				<font size="5">个人信息管理</font>
+			</p>
+			<p align="center">																				<!--添加四个管理的按钮-->
+				<%= button_to '基本信息', edit_user_path(@user.id), :method => :get, remote: true, :class => :p7 %><br>
+				<%= button_to '项目管理', project_manage_path, :method => :get, remote: true, :class => :p7 %><br>
+				<input class="p7" value="成果管理" type="submit"><br><br>
+				<input class="p7" value="文献管理" type="submit"><br><br>
+			</p>
+		</div>
+		<div id="center_right">
+			<div id="search_core">
+				<%= render 'search/search_core' %>
+			</div>
+		</div>
+		<%#render 'project_manage' %>
+<!--窗口底部div-->
+<!-- 		<div class="p16">				
+			<p align="center">
+				<font color="white" size="2">
+					Copyright2012 All Rights Reserved 南开大学 版权所有
+					<br><br>
+				</font>	
+			</p>
+		</div> -->

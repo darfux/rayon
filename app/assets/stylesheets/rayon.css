@@ -1,0 +1,21 @@
+#notice{
+	text-align:center;
+	margin-left:auto; 
+	margin-right:auto;
+	font-weight:bold;
+}
+#notice font{
+	color:#CC6666;
+}
+#error_explanation, .field_with_errors{
+	text-align:center;
+	margin-left:auto; 
+	margin-right:auto;
+} 
+#search_core{
+	position:relative;
+	margin-top:5%;
+	margin-left:15%;
+	width:85%;
+	height:85%;
+}

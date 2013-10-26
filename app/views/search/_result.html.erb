@@ -1,0 +1,45 @@
+<style type="text/css">
+	<!--
+	table{margin-top: 3em}
+	table tr{height: 16px}
+	th{font-size: 16px}
+	td{font-size: 16px}
+	-->
+</style>
+<table class="p5" width="80%" border="1" align="center" bgcolor="#CCCCCC" rules="all">
+	<% attr_ar = @results[0].class.search_show_attrs %>
+	<tr align="center" bgcolor="##66CCFF">
+		<th>编号</th>
+		<% 	attr_ar.each do |attr|%>
+			<th><%= attr[0] %></th>
+		<% end %>
+	</tr>
+	<% @results.each do |result|%>
+		<tr align="center">
+			<td><%= result.id %></td>
+			<% 	attr_ar.each do |attr|%>
+				<td><%=link_to result.send(attr[1]), result %></td>
+			<% end %>
+		</tr>
+	<% end %>
+</table>
+<p align="center">										<!--表格下方的页数控制-->
+	<a>首页</a>
+	<a>上一页</a>
+	<a>下一页</a>
+	<font>页次</font>
+	<font>1/2页</font>
+	第
+	<select name="allpage">
+		<option value="page" selected>1			<!--表示页数的下拉菜单-->
+		<option value="page">2
+		<option value="page">3
+	</select>
+	页
+	<select name="pagenumber">
+		<option value="page" selected>每页10条			<!--表示显示条数的下拉菜单-->
+		<option value="page">每页20条
+		<option value="page">每页30条
+	</select>
+	共12条记录
+</p>

@@ -1,0 +1,20 @@
+<%= form_tag('/search/result', remote: true)  do |f| %>
+<% field_size = 48 %>
+	<div class="field">
+	<% SearchController.SEARCH_TYPE.each do |key, opt| %>
+	    <%= radio_button_tag :search_type, key, get_check_state(key)%><%= opt[:label] %>
+	<% end %>
+	</div>
+
+	<div class="field">
+	  <%= text_field :search, :search_content, size: field_size %>
+	  <action class="actions">
+	    <%= submit_tag '搜索' %>
+	  </action>
+	</div>
+<% end %>
+
+<div id="result"/>
+<%# unless @results.nil?||@results.empty? %>
+		<%# render 'result' %>
+<%# end %>

@@ -1,0 +1,46 @@
+<style type="text/css">
+<!--
+.login fieldset{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: right;
+  width:300px;
+}
+#notice {
+  text-align: center;  
+  margin-left: auto; 
+  margin-right: auto;
+  color: #000;
+  border: 2px solid red;
+  padding: 1em;
+  margin-bottom: 2em;
+  background-color: #f0f0f0;
+  font: bold smaller sans-serif;
+}
+-->
+</style>
+<div class="login">
+  <% if flash[:alert] %>
+    <p id="notice"><%= flash[:alert] %></p>
+  <% end %>
+
+  <%= form_tag '/login' do %>
+
+    <fieldset>
+      <legend>Please Log In</legend>
+      <div>
+        <label for="uid">Uid:</label>
+        <%= text_field_tag :uid, params[:uid] %>
+      </div>
+
+      <div>
+        <label for="password">Password:</label>
+        <%= password_field_tag :password, params[:password] %>
+      </div>
+  
+      <div>
+        <%= submit_tag "Login" %>
+      </div>
+    </fieldset>
+  <% end %>
+</div>
