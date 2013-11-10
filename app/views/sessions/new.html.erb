@@ -1,33 +1,29 @@
-<!DOCTYPE HTML>
+<link href="./css/login.css" rel="stylesheet" media="screen">
 <title>Login</title>
-<style type="text/css">
-	<!--
-	body{background-color: #FFFFFF}
-	div.login_form{margin-top: 256px}
-	div.title{font-size: 32px;font-weight: bold;margin-bottom: 1em}
-	label{font-size: 24px; margin-left: 0.5em}
-	input{font-size: 24px}
-	#button{margin-left: 1em;width: 96px}
-	-->
-</style>
-		<div class="login_form">
-			<div class="title" align="center" color="blue"><font color="blue">对口支援特色联合科研平台</font></div>
-			<%= form_tag '/login' do %>
-				<br/>
-				<p align="center">
-					<label><font>Uid:</font></label>
-					<%= text_field_tag :uid, params[:uid], size: 8 %>
-					<label><font>密码:</font></label>
-					<%= password_field_tag :password, params[:password], size: 8 %>
-					<%= submit_tag "登陆", id: "button" %>
-				</p>
+		<div class="container" id="login">
+			<div class="container title">
+				<h1>对口支援联合特色科研平台</h1>
+			</div>
+			<div  class="form-signin" >
+				<h2 class="form-signin-heading zh-cha" id="log_title">请登录</h2>
+				<%= form_tag '/login' do %>
+					<% unless flash[:uidwr] %>
+						<%= text_field_tag :uid, params[:uid], class: "form-control", placeholder: "Uid", required: true, autofocus: true%>
+					<% else %>
+						<div class="form-group has-error">
+						  <%= text_field_tag :uid, params[:uid], class: "form-control", placeholder: "Uid", required: true, autofocus: true%><label class="control-label" for="uid"><%= flash[:uidwr] %></label>
+						</div>
+					<% end %>					
+					<% unless flash[:pswwr] %>
+						<%= password_field_tag :password, params[:password], class: "form-control", placeholder: "密码", required: true%>
+					<% else %>
+						<div class="form-group has-error">
+							<%= password_field_tag :password, params[:password], class: "form-control", placeholder: "密码", required: true%><label class="control-label" for="uid"><%= flash[:pswwr] %></label>
+						</div>
+					<% end %>
 
-				<% if flash[:alert] %>
-		    	<p id="notice"><font><%= flash[:alert] %></font></p>
-		  	<% end %>
-
-  		<% end %>
-  		<hr size="2.5"width="60%"align="center" color="#66CCFF"/>
-			<p align="center">忘记密码？请联系管理员邮箱xxx@nankai.edu.cn</p>
-  	</div>
+					<%= submit_tag "登录", id: "button",  class: "btn btn-lg btn-primary zh-cha"%>
+				<% end %>
+			</div>
+		</div>
 </html>

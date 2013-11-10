@@ -13,9 +13,9 @@ class SessionsController < ApplicationController
       redirect_to welcome_path
     else
       if user
-        redirect_to root_path, :alert => "密码错误"
+        redirect_to root_path, flash: {pswwr: "密码错误"}
       else
-        redirect_to root_path, :alert => "Uid不存在"
+        redirect_to root_path, flash: {uidwr: "Uid不存在"}
       end
     end
   end
