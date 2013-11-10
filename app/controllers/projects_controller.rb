@@ -73,7 +73,14 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def manage
+  def manage_list
+    @projects = User.find(session[:user_id]).projects.to_a
+    respond_to do |format|
+      format.js
+    end
+  end  
+
+  def manage_tag
     @projects = User.find(session[:user_id]).projects.to_a
     respond_to do |format|
       format.js
