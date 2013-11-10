@@ -1,6 +1,9 @@
 RayonPre::Application.routes.draw do
   root to: 'sessions#new'
 
+  get "match" => "match#index"
+  get "match/match"
+
   get "search" => "search#index"
   post "search/result" => "search#search"
 

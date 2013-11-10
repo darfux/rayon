@@ -23,7 +23,9 @@
 					<% end %>
 				</div>
 				<div class="col-md-4 col-sm-6 panel-block">
-					<div class="panel-elm" id="panel-elm5"><p class="panel-text">Match</p></div>
+					<%= link_to(match_path, remote: true)  do %>
+						<div class="panel-elm" id="panel-elm5"><p class="panel-text">Match</p></div>
+					<% end %>
 				</div>
 			</div>
 		</div>
