@@ -20,7 +20,11 @@
                 <td>Table cell</td>
                 <td>Table cell</td>
                 <td>Table cell</td>
-                <td><a>show</a> <a>show</a> <a>show</a></td>
+                <td>
+                    <a>show</a> 
+                    <%= link_to 'edit', edit_project_path(0), remote: true %>
+                    <a>delete</a>
+                </td>
             </tr>
             <tr>
                 <td>2</td>
