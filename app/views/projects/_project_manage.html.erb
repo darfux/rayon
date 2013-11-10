@@ -1,44 +1,64 @@
-<div class="p15">					<!--窗口中部右侧div-->
-	<p class="p3">
-		<font color="white">项目管理编辑</font>
-	</p>
-  <div id="project_content"/>
-  <div id="project_list">
-	 <div>add project</div>
-	 <table>
-    	<thead>
-    	  <tr>
-    	    <th>Name</th>
-    	    <th>Description</th>
-    	    <!-- <th>User</th> -->
-    	    <th>Start</th>
-    	    <th>End</th>
-    	    <th>Source</th>
-    	    <th></th>
-    	    <th></th>
-    	    <th></th>
-    	  </tr>
-    	</thead>
-	 
-    	<tbody>
-    	  <% @projects.each do |project| %>
-    	    <tr>
-    	      <td><%= project.name %></td>
-    	      <td><%= project.description[0..10]+"..." %></td>
-    	      <!-- <td> -->
-    	      	<%# project.users.map.each do |user| %>
-    	      	<%# user.name + ' ' %>
-    	      	<%# end %>
-    	      <!-- </td> -->
-    	      <td><%= project.start %></td>
-    	      <td><%= project.end %></td>
-    	      <td><%= project.source.name %></td>
-    	      <td><%= link_to 'Show', project, remote: true %></td>
-    	      <td><%= link_to 'Edit', edit_project_path(project), remote: true %></td>
-    	      <td>Destroy</td>
-    	    </tr>
-    	  <% end %>
-    	</tbody>
-	 </table>
-  </div>
+<div class="container">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+            <tr class="success">
+                <th></th>
+                <th>Table heading</th>
+                <th>Table heading</th>
+                <th>Table heading</th>
+                <th>Table heading</th>
+                <th>Table heading</th>
+                <th>Table heading</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td><a>show</a> <a>show</a> <a>show</a></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+                <td>Table cell</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

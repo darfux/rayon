@@ -4,7 +4,7 @@
 $(function(){
 	$("#start-btn").click(function(){
 		$("#welcome-jumbotron").fadeOut("normal", function(){
-			$("#panel").show('slide', {direction: 'right'},  1000);
+			 $("#panel").show('slide', {direction: 'right'},  1000);
 		});
 
 	});
@@ -14,10 +14,8 @@ $(function(){
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
-			<div class="row" id="header">
-				<div class="page-header">
-				  <h2>对口支援联合科研平台<small>Project Rayon</small></h2>
-				</div>
+			<div class="page-header" id="header">
+			  <h2>Rayon</h2>
 			</div>
 			<div id="top-nav">
 				<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
@@ -31,7 +29,7 @@ $(function(){
 				  </div>
 				  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				    <ul class="nav navbar-nav">
-				      <li class="active"><a href="#">首页</a></li>
+				      <li class="active"><%= link_to '首页', welcome_path, remote: true%></li>
 				    </ul>
 				    <ul class="nav navbar-nav navbar-right">
 				    	<li><%= link_to '退出', logout_path, :method => :delete%></li>
@@ -44,37 +42,17 @@ $(function(){
 </div>
 
 <div id="main-content">
-	<div class="jumbotron" id="welcome-jumbotron">
-		<h3><%= @user.uid %></h3>
-		<h1>Welcome Back!</h1>
-		<a class="btn btn-primary btn-lg" role="button" id="start-btn">Start</a>
-	</div>
-	<div class="container panel" id="panel" style="display:none">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="col-md-4 col-sm-6 panel-block">
-					<%= link_to(project_manage_path) do %>
-						<div class="panel-elm" id="panel-elm0"><p class="panel-text">Projects Manage</p></div>
-					<% end %>
-				</div>
-				<div class="col-md-4 col-sm-6 panel-block">
-					<div class="panel-elm" id="panel-elm1"><p class="panel-text">Achievements Manage</p></div>
-				</div>
-				<div class="col-md-4 col-sm-6 panel-block">
-					<div class="panel-elm" id="panel-elm2"><p class="panel-text">Papers Manage</p></div>
-				</div>
-			</div>
-			<div class="col-md-12">
-				<div class="col-md-4 col-sm-6 panel-block">
-					<div class="panel-elm" id="panel-elm3"><p class="panel-text">Information Edit</p></div>
-				</div>
-				<div class="col-md-4 col-sm-6 panel-block">
-					<div class="panel-elm" id="panel-elm4"><p class="panel-text">Search</p></div>
-				</div>
-				<div class="col-md-4 col-sm-6 panel-block">
-					<div class="panel-elm" id="panel-elm5"><p class="panel-text">Match</p></div>
-				</div>
-			</div>
+	<% if flash[:notice]%>
+		<div class="jumbotron" id="welcome-jumbotron">
+			<h3><%= @user.uid %></h3>
+			<h1>Welcome Back!</h1>
+			<a class="btn btn-primary btn-lg" role="button" id="start-btn">Start</a>
 		</div>
-	</div>
+	<% end %>
+	<%= render 'panel'%>
+	<% if flash[:notice]%>
+		<script type="text/javascript">
+			$('#panel').css({"display":"none"});
+		</script>
+  <% end %>
 </div>

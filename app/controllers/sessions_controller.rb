@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     user = User.find_by(uid: params[:uid])#not the name
     if user and user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to welcome_path
+      redirect_to welcome_path, notice: true;
     else
       if user
         redirect_to root_path, flash: {pswwr: "密码错误"}
