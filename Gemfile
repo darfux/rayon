@@ -1,4 +1,4 @@
-source 'https://rubygems.org/'
+source 'http://ruby.taobao.org/'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
@@ -48,4 +48,4 @@ gem 'sunspot_rails'
 
 gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development
 
-gem "therubyracer", :require => 'v8' #linux ExecJS support
+gem "therubyracer", :platform => 'ruby' #linux ExecJS support

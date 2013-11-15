@@ -1,0 +1,13 @@
+<=>
+If you are in windows and meet the problem to install therubyracer,try these:
+	http://stackoverflow.com/questions/16514758/gem-install-libv8-version-3-11-8-17-on-ruby-windows
+  https://github.com/hiranpeiris/therubyracer_for_windows
+  http://saquery.com/cannot-install-therubyracer-on-windows/
+
+<=>
+About cannot load such file -- 2.0/bcrypt_ext:
+After run bundle, run command: 
+ 'gem install bcrypt-ruby -v '3.0.1' --no-doc --no-ri --platform=ruby'
+ and run 'gem uninstall bcrypt-ruby to uninstall the mingw32 version'
+
+See also:	https://github.com/JumpstartLab/curriculum/issues/645
