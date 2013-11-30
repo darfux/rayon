@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  paper_id: MyString
+  user_id: MyString
+  own_type_id: MyString
+
+two:
+  paper_id: MyString
+  user_id: MyString
+  own_type_id: MyString

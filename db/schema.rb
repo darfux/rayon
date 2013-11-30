@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131006141850) do
+ActiveRecord::Schema.define(version: 20131130131838) do
 
   create_table "achievements", force: true do |t|
     t.string   "title"
@@ -19,6 +19,14 @@ ActiveRecord::Schema.define(version: 20131006141850) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+  end
+
+  create_table "paper_users", force: true do |t|
+    t.integer  "paper_id"
+    t.integer  "user_id"
+    t.integer  "own_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "papers", force: true do |t|
@@ -64,6 +72,20 @@ ActiveRecord::Schema.define(version: 20131006141850) do
     t.integer  "source_id"
     t.integer  "project_state_id"
     t.integer  "project_type_id"
+  end
+
+  create_table "research_direction_users", force: true do |t|
+    t.integer  "research_direction_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "research_directions", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "sources", force: true do |t|
