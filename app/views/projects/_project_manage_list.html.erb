@@ -3,65 +3,18 @@
         <table class="table table-hover">
             <thead>
             <tr class="success">
-                <th></th>
-                <th>Table heading</th>
-                <th>Table heading</th>
-                <th>Table heading</th>
-                <th>Table heading</th>
-                <th>Table heading</th>
-                <th>Table heading</th>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Brief</th>
+                <th>Start/End</th>
+                <th>State</th>
+                <th>Source</th>
+                <th>Participation</th>
+                <th>Manage</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>1</td>
-                <td>Table cell</td>
-                <td>Table cell</td>
-                <td>Table cell</td>
-                <td>Table cell</td>
-                <td>Table cell</td>
-                <td>
-                    <a>show</a> 
-                    <%= link_to 'edit', edit_project_path(0), remote: true %>
-                    <a>delete</a>
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Table cell</td>
-                <td>Table cell</td>
-                <td>Table cell</td>
-                <td>Table cell</td>
-                <td>Table cell</td>
-                <td>Table cell</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Table cell</td>
-                <td>Table cell</td>
-                <td>Table cell</td>
-                <td>Table cell</td>
-                <td>Table cell</td>
-                <td>Table cell</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Table cell</td>
-                <td>Table cell</td>
-                <td>Table cell</td>
-                <td>Table cell</td>
-                <td>Table cell</td>
-                <td>Table cell</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Table cell</td>
-                <td>Table cell</td>
-                <td>Table cell</td>
-                <td>Table cell</td>
-                <td>Table cell</td>
-                <td>Table cell</td>
-            </tr>
+            <%= render 'project_list_cells'%>
             </tbody>
         </table>
     </div>

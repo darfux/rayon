@@ -1,5 +1,7 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :update, :destroy]
+  # before_action :set_project, only: [:show, :update, :destroy]
+  before_action :set_user, only: [:manage_list, :manage_tag]
+  before_action :set_projects, only: [:manage_list, :manage_tag]
 
   # GET /projects
   # GET /projects.json
@@ -72,20 +74,25 @@ class ProjectsController < ApplicationController
   end
 
   def manage_list
-    @projects = User.find(session[:user_id]).projects.to_a
     respond_to do |format|
       format.js
     end
   end  
 
   def manage_tag
-    @projects = User.find(session[:user_id]).projects.to_a
     respond_to do |format|
       format.js
     end
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_user
+      @user = User.find(session[:user_id])
+    end
+    def set_projects
+      @projects = @user.projects.to_a
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_project
       @project = Project.find(params[:id])
