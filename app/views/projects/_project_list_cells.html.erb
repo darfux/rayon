@@ -4,15 +4,12 @@
     <td><%= project.name %></td>
     <td><%= get_brief(project) %></td>
     <td><%= project.start.to_s+'/'+project.end.to_s %></td>
-    <td><%= ProjectState.find(project.project_state_id).name %></td>
-    <td><%= Source.find(project.source_id).name %></td>
-    <td><%= ParticipationType.find(
-        ProjectUser.where(user_id: @user.id, project_id: project.id
-            ).first.participation_type_id
-                ).name %></td>
+    <td><%= get_state(project) %></td>
+    <td><%= get_source(project) %></td>
+    <td><%= get_participation(project, @user) %></td>
     <td>
-        <a>show</a> 
-        <%= link_to 'edit', edit_project_path(0), remote: true %>
+        <%= link_to 'show', project, remote: true %>
+        <%= link_to 'edit', edit_project_path(project.id), remote: true %>
         <a>delete</a>
     </td>
 </tr>
