@@ -36,6 +36,13 @@ module ProjectsHelper
   	options = Array.new(50) { |index| year = base_year+index; [year, year] }
 	end
 
+  def get_source_select
+    selects = []
+    Source.all.each {|source| selects<<[source.name, source.id]}
+    p selects
+    selects
+  end
+
   def gen_li(dt, dd)
     li = 
       "<dl class='dl-horizontal'>"+
