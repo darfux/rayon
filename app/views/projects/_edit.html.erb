@@ -4,31 +4,33 @@
 <script type="text/javascript" src="./js/bootstrap-datetimepicker.js"></script>
 <script type="text/javascript" src="./js/bootstrap-datetimepicker.ru.js"></script>
 <div class="container form">
-	<%= form_tag '/login',class: "form-horizontal", role: "form" do %>
-	  <div class="form-group">
+	<%= form_for(@project, html: {class: "form-horizontal", role: "form"}) do |f|%>
+		<div class="form-group">
 			<label for="name" class="col-sm-2 control-label">Project Name</label>
 			<div class="col-sm-10">
-			  <%= text_field_tag :name, nil, class: "form-control", placeholder: @project.name, required: true, autofocus: true%>
+			  <%= f.text_field :name, class: "form-control", placeholder: @project.name, required: true, autofocus: true%>
 			</div>
-	  </div>
-	 	<div class="form-group">
-			<label for="name" class="col-sm-2 control-label">Project Source</label>
+	  	</div>
+ 		<div class="form-group">
+            <label for="name" class="col-sm-2 control-label">Project Source</label>
+            <div class="col-sm-10">
+              <%= f.select :source, get_source_select, {},{class: "form-control", required: true, autofocus: true}%>
+            </div>
+        </div>
+	  	<div class="form-group">
+			<label for="date" class="col-sm-2 control-label">Project Date</label>
 			<div class="col-sm-10">
-			  <%= select_tag :source, options_for_select(get_source_select), class: "form-control", required: true, autofocus: true%>
-			</div>
-	  </div>
-	  <div class="form-group">
-		<label for="date" class="col-sm-2 control-label">Project Date</label>
-		<div class="col-sm-10">
-			<div class='col-md-6'>
-				<div class="form-group">
-					<div class='input-group date'>
-						<%= text_field_tag :start, nil, class: "form-control", "data-format" => "YYYY-MM-DD",placeholder: @project.start, required: true, autofocus: true %>
-						<span class="input-group-addon">-</span>
-						<%= text_field_tag :end, nil, class: "form-control", "data-format" => "YYYY-MM-DD", placeholder: @project.end, required: true, autofocus: true %>
+				<div class='col-md-6'>
+					<div class="form-group">
+						<div class='input-group date'>
+							<%= f.text_field :start, class: "form-control", "data-format" => "YYYY-MM-DD",placeholder: @project.start, required: true, autofocus: false, id: "start" %>
+							<span class="input-group-addon">-</span>
+							<%= f.text_field :end, class: "form-control", "data-format" => "YYYY-MM-DD", placeholder: @project.end, required: true, autofocus: false, id: "end" %>
+						</div>
 					</div>
 				</div>
 			</div>
+		</div>
 			<script type="text/javascript">
 				$(function () {
 					$('#start').datetimepicker({
