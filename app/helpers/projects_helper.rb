@@ -38,7 +38,7 @@ module ProjectsHelper
 
   def get_source_select
     selects = []
-    Source.all.each {|source| selects<<[source.name, source.id]}
+    Source.all.each {|source| selects<<[source.name, source.id.to_i]}
     p selects
     selects
   end

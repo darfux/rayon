@@ -1,0 +1,86 @@
+<%= form_for(@project, remote: true, html: {class: :"form-horizontal", role: "form"}) do |f|%>
+    <div class="form-group">
+      <label for="name" class="col-sm-2 control-label">Project Name</label>
+      <div class="col-sm-10">
+        <%= f.text_field :name, class: :"form-control", placeholder: @project.name, required: true, autofocus: true%>
+      </div>
+      </div>
+    <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">Project Source</label>
+            <div class="col-sm-10">
+              <%= f.select :source_id, get_source_select, {},{class: :"form-control", required: true, autofocus: false}%>
+            </div>
+        </div>
+      <div class="form-group">
+      <label for="date" class="col-sm-2 control-label">Project Date</label>
+      <div class="col-sm-10">
+        <div class='col-md-6'>
+          <div class="form-group">
+            <div class='input-group date'>
+              <%= f.text_field :start, class: :"form-control", "data-format" => "YYYY-MM-DD",placeholder: @project.start, required: true, autofocus: false, id: "start" %>
+              <span class="input-group-addon">-</span>
+              <%= f.text_field :end, class: :"form-control", "data-format" => "YYYY-MM-DD", placeholder: @project.end, required: true, autofocus: false, id: "end" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <script type="text/javascript">
+        $(function () {
+          $('#start').datetimepicker({
+            pickTime: false
+           });
+          $('#end').datetimepicker({
+            pickTime: false
+           });
+          $("#start").on("change.dp",function (e) {
+             $('#end').data("DateTimePicker").setStartDate(e.date);
+          });
+          $("#end").on("change.dp",function (e) {
+             $('#start').data("DateTimePicker").setEndDate(e.date);
+          });
+        });
+      </script>
+    <div class="form-group">
+      <label for="name" class="col-sm-2 control-label">Project Type</label>
+      <div class="col-md-10">
+        <% ProjectType.all.each do |type| %>
+          <label class="checkbox-inline">
+            <%= f.radio_button :project_type_id, type.id%><%= type.name.chomp %>
+          </label>
+        <% end %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="name" class="col-sm-2 control-label">Project State</label>
+      <div class="col-md-10">
+        <% ProjectState.all.each do |state| %>
+          <label class="checkbox-inline">
+            <%= f.radio_button :project_state_id, state.id%><%= state.name.chomp %>
+          </label>
+        <% end %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="name" class="col-sm-2 control-label">Project Participation</label>
+      <div class="col-md-10">
+        <% ParticipationType.all.each do |par| %>
+          <label class="checkbox-inline">
+            <%= radio_button_tag :participation_type_id, par.id%><%= par.name.chomp %>
+          </label>
+        <% end %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="name" class="col-sm-2 control-label">Project Description</label>
+      <div class="col-md-10">
+        <%= f.text_area :description, class: :"form-control", rows: 4%>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-md-10">
+        <%= f.submit "Submit",class: "btn btn-default" %>
+        <!-- <button type="submit" class="btn btn-default">Submit</button> -->
+      </div>
+    </div>
+  <% end %>
