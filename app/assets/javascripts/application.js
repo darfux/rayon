@@ -10,6 +10,13 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery-2.0.3
+//= require jquery.effects.core
+//= require jquery.effects.slide
+//= require jquery
 //= require jquery_ujs
+//= require bootstrap
+//= require moment
+//= require bootstrap-datetimepicker
 //= require turbolinks
 //= require_tree .
