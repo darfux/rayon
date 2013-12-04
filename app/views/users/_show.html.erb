@@ -3,10 +3,15 @@
 		<div class="col-md-3">
 			<img src="./img/a.jpg" class="img-responsive img-thumbnail" alt="Responsive image">
 		</div>
-			<div class="col-md-9">
-			<h3>Uid:<%= @user.id %></h3>
-			<h3>Name:<%= @user.name %></h3>
-			<h3>Title:<%= @user.title.name %></h3>
+		<div class="col-md-9">
+			<div class="row">
+				<h3>Uid: <%= @user.uid %></h3>
+				<h3>Name: <%= @user.name %></h3>
+				<h3>Title: <%= @user.title.name %></h3>
+			</div>
+			<div class="row">
+				<div>My research direction:</div>
+			</div>
 		</div>
 	</div>
 </div>
