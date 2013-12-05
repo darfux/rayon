@@ -1,0 +1,20 @@
+<% content_for :main_content do %>
+
+<div class="container">
+  <% project_info={
+    "Project Name" => @project.name,
+    "Project Source" => get_source(@project),
+    "Project Date" => @project.start.to_s+' to '+@project.end.to_s,
+    "Project Type" => get_type(@project),
+    "Project State" => get_state(@project),
+    "Participation Type" => get_participation(@project, @user),
+    "Project Description" => @project.description}
+    %>
+  <% project_info.each do |dt, dd| %>
+    <%= sanitize gen_li(dt, dd) %>
+  <% end %>
+  <dl class='dl-horizontal'>
+      <dd><%= link_to 'Back', project_manage_list_path %></dd>
+  </dl>
+</div>
+<% end %>

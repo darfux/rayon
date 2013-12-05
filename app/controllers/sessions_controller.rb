@@ -4,13 +4,14 @@ class SessionsController < ApplicationController
       redirect_to welcome_path
       return
     end
+    render layout: false
   end
 
   def create
     user = User.find_by(uid: params[:uid])#not the name
     if user and user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to welcome_path, notice: true;
+      redirect_to welcome_path, notice: :login;
     else
       if user
         redirect_to root_path, flash: {pswwr: "密码错误"}

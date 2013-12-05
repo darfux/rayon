@@ -2,6 +2,7 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :update, :destroy, :edit]
   before_action :set_user, only: [:show, :create, :manage_list, :manage_tag, :update]
   before_action :set_projects, only: [:manage_list, :manage_tag]
+  before_action :set_participation, only: [:update]
 
   # GET /projects
   # GET /projects.json
@@ -13,6 +14,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     respond_to do |format|
+      format.html
       format.js
     end
   end
@@ -29,7 +31,8 @@ class ProjectsController < ApplicationController
   # GET /projects/1/edit
   def edit
     respond_to do |format|
-        format.js
+      format.html
+      format.js
     end
   end
 
@@ -41,12 +44,16 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       begin
         Project.transaction do
-          @project.save
+          @project.save!
           @project.project_users.create!({user_id: @user.id,
             participation_type_id: params[:participation_type_id]})
         end
+        format.html {render action: 'show'}
         format.js {render action: 'show'}
       rescue Exception => e
+        format.html { render action: 'edit' }
+        format.json { render json: @project.errors, status: :unprocessable_entity }
+        format.js {render action: 'show'}
         format.js {render text: "alert('#{@project.errors}')"}
       end
     end
@@ -56,12 +63,18 @@ class ProjectsController < ApplicationController
   # PATCH/PUT /projects/1.json
   def update
     respond_to do |format|
-      if @project.update(project_params)
+      begin
+        Project.transaction do
+          @project.update(project_params)
+          par_type = params[:participation_type_id]
+          @par.update!({participation_type_id: par_type}) if par_type
+        end
+        format.html { redirect_to @project, notice: 'Project was successfully updated.' }
+        format.json { head :no_content }
         format.js {render action: 'show'}
-      else
-        format.js {render text: "alert('#{@project.errors}')"}
-        # format.html { render action: 'edit' }
-        # format.json { render json: @project.errors, status: :unprocessable_entity }
+      rescue Exception => e
+        format.html { render action: 'edit' }
+        format.json { render json: @project.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -78,6 +91,7 @@ class ProjectsController < ApplicationController
 
   def manage_list
     respond_to do |format|
+      format.html
       format.js
     end
   end  
@@ -102,7 +116,9 @@ class ProjectsController < ApplicationController
       # p params
       @project = Project.find_by_id(params[:id])
     end
-
+    def set_participation
+      @par = ProjectUser.find_by(project_id: params[:id], user_id: session[:user_id])
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
       params.require(:project).permit(:name, :description, :start, :end, 

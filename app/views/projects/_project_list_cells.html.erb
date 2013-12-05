@@ -8,8 +8,8 @@
     <td><%= get_source(project) %></td>
     <td><%= get_participation(project, @user) %></td>
     <td>
-        <%= link_to 'show', project, remote: true %>
-        <%= link_to 'edit', edit_project_path(project.id), remote: true %>
+        <%= link_to 'show', project %>
+        <%= link_to 'edit', edit_project_path(project.id) %>
         <a>delete</a>
     </td>
 </tr>
