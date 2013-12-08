@@ -1,3 +1,6 @@
+<% content_for :head do %>
+<%= stylesheet_link_tag "user_show", media: "all" %>
+<% end %>
 <% content_for :main_content do %>
 <div class="container">
 	<div class="row">
@@ -10,9 +13,23 @@
 				<h3>Name: <%= @user.name %></h3>
 				<h3>Title: <%= @user.title.name %></h3>
 			</div>
+			<!-- research direction -->
 			<div class="row">
-				<div>My research direction:</div>
+				<div>
+					<div>
+						<h3 class="research-direction-title">My research directions</h3>
+					</div>
+					<% @user.research_directions.each do |rd| %>
+						<div class="research-direction-tag"><%= rd.name %>
+							<%= link_to "", rd, class: "tag-remove" do %>
+								<span class="glyphicon glyphicon-remove"/>
+							<% end %>
+						</div>
+					<% end %>
+					<div id="research-direction-tag-add">+</div>
+				</div>
 			</div>
+			<!-- research direction end -->
 		</div>
 	</div>
 </div>

@@ -30,6 +30,7 @@
 				  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				    <ul class="nav navbar-nav"  id="bot-nav-left">
 				      <li class="active"><%= link_to 'Home', welcome_path%></li>
+				      <%= yield :bottom_nav %>
 				    </ul>
 				    <ul class="nav navbar-nav navbar-right">
 				    	<li><%= link_to 'logout', logout_path, :method => :delete%></li>

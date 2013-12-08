@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131130131838) do
+ActiveRecord::Schema.define(version: 20131207145000) do
 
   create_table "achievements", force: true do |t|
     t.string   "title"
@@ -74,16 +74,16 @@ ActiveRecord::Schema.define(version: 20131130131838) do
     t.integer  "project_type_id"
   end
 
-  create_table "research_direction_users", force: true do |t|
-    t.integer  "research_direction_id"
-    t.integer  "user_id"
+  create_table "research_directions", force: true do |t|
+    t.string   "name"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "research_directions", force: true do |t|
-    t.string   "name"
-    t.string   "description"
+  create_table "research_directions_users", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "research_direction_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

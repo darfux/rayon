@@ -1,13 +1,14 @@
 class User < ActiveRecord::Base
-	has_many :project_users
-  has_many :projects, through: :project_users
+	has_many :project_users, :dependent => :destroy
+  has_many :projects, through: :project_users, :dependent => :destroy
 
   has_many :achievements
 
-  has_many :paper_users
+  has_many :paper_users, :dependent => :destroy
   has_many :papers, through: :paper_users
 
   has_and_belongs_to_many :research_directions
+  
   belongs_to :title
 
   validates :uid, :presence => true, :uniqueness => true

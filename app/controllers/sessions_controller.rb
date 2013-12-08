@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  skip_before_filter :authorize
   def new
     if session[:user_id]
       redirect_to welcome_path
