@@ -24,7 +24,8 @@ class ProjectsController < ApplicationController
     @project = Project.new
     params[:_local_user] = User.find_by_id(session[:user_id])
     respond_to do |format|
-        format.js
+      format.html
+      format.js
     end
   end
 
