@@ -42,7 +42,12 @@
 }
 #research-direction-tag-add:hover{
 	background-color: #EEEEEE;
+	cursor: pointer;
 }
-#user-nav{
-	margin-bottom: 20px;
+.modal-dialog {
+	/*margin-top: 15%;*/
+  padding-top: 15%;
+}
+#myModal{
+	overflow-y:hidden;
 }

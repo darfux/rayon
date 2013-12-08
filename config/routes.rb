@@ -1,4 +1,6 @@
 RayonPre::Application.routes.draw do
+  get "research_directions/create"
+  get "research_directions/destroy"
   root to: 'sessions#new'
 
   get "match" => "match#index"
@@ -15,6 +17,9 @@ RayonPre::Application.routes.draw do
   
   resources :projects
   resources :users
+  resources :research_directions
+
+  post "research_directions" => "research_directions#create", as: "create_research_direction"
   
   get "welcome" => "welcome#index", as: "welcome"
   

@@ -21,17 +21,48 @@
 					</div>
 					<% @user.research_directions.each do |rd| %>
 						<div class="research-direction-tag"><%= rd.name %>
-							<%= link_to "", rd, class: "tag-remove" do %>
+							<%= link_to rd,  method: :delete, class: "tag-remove" do %>
 								<span class="glyphicon glyphicon-remove"/>
 							<% end %>
 						</div>
 					<% end %>
-					<div id="research-direction-tag-add">+</div>
+					<div type="button" id="research-direction-tag-add" data-toggle="modal" data-target="#myModal">+</div>
 				</div>
 			</div>
 			<!-- research direction end -->
 		</div>
 	</div>
 </div>
+
+<!-- Modal -->
+<script>
+$(document).ready(function(){
+	$("#myModal").on('shown.bs.modal', function(e) {
+	  $(this).find("[autofocus]:first").focus();
+	});
+})
+</script>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Add my research direction</h4>
+      </div>
+    	<%= form_tag create_research_direction_path do %>
+      <div class="modal-body">
+      		<%= text_field_tag :name, nil, class: :"form-control", placeholder: "example: Cloud Computing", required: true, autofocus: true%>
+        	<!-- <input type="text" class="form-control" id="name" placeholder="example: Cloud Computing"/> -->
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+        <%= submit_tag "Add", class: :"btn btn-primary", data: { disable_with: "Please wait..." } %>
+      </div>
+    	<% end %>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- modal end -->
 <% end %>
 
