@@ -1,2 +1,22 @@
-<h1>Match#index</h1>
-<p>Find me in app/views/match/index.html.erb</p>
+<%= content_for :head do %>
+<%= stylesheet_link_tag "match", media: "all" %>
+<% end %>
+<% content_for :main_content do %>
+<div>
+	<center>
+		<h4>Do not want to waste time?</h4>
+		<h4>Lost in searching so much data?</h4>
+		<h4>Need to find what's properest for you?</h4>
+		<p/>
+		<h2>Now</h2>
+		<h3>Click the match button below</h3>
+		<h1 class="text-muted">Get the entanglements belonging you.</h1>
+	</center>
+	<div class="container match-btn"  id="match-btn-common">
+		<img src="<%= asset_path 'matchCommon.png'%>" class="img-rounded img-responsive" alt="Responsive image" onmouseover="this.src='<%= asset_path 'matchHover.png'%>'" onmouseout="this.src='<%= asset_path 'matchCommon.png'%>'"/>
+	</div>
+	<center class="match-btn" id="match-btn-lg">
+		<img class="img-rounded" src="<%= asset_path 'matchCommon.png'%>"  onmouseover="this.src='<%= asset_path 'matchHover.png'%>'" onmouseout="this.src='<%= asset_path 'matchCommon.png'%>'"/>
+	</center>
+</div>
+<% end %>
