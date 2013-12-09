@@ -1,6 +1,14 @@
+<% content_for :pre_header do %>
+<div class="col-md-2 pull-right btn-group">
+    <button type="button" class="btn btn-default glyphicon glyphicon-list active"/>
+    <button type="button" class="btn btn-default glyphicon glyphicon-th-large" onclick="window.open('<%=project_manage_tag_path %>', '_self')"/>
+</div>
+<% end %>
+
 <% content_for :bottom_nav do %>
 <li><%= link_to 'Create', new_project_path %></li>
 <% end %>
+
 <% content_for :main_content do %>
     <div class="container">
         <div class="table-responsive">

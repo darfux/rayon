@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :update, :destroy, :edit]
-  before_action :set_user, only: [:show, :create, :manage_list, :manage_tag, :update]
+  before_action :set_user, only: [:show, :create, :edit, :manage_list, :manage_tag, :update]
   before_action :set_projects, only: [:manage_list, :manage_tag]
   before_action :set_participation, only: [:update]
 
@@ -13,6 +13,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
+    @back_link = @@manage_page if flash[:burst_back]
     respond_to do |format|
       format.html
       format.js
@@ -49,6 +50,7 @@ class ProjectsController < ApplicationController
           @project.project_users.create!({user_id: @user.id,
             participation_type_id: params[:participation_type_id]})
         end
+        @back_link = @@manage_page
         format.html {render action: 'show'}
         format.js {render action: 'show'}
       rescue Exception => e
@@ -70,7 +72,7 @@ class ProjectsController < ApplicationController
           par_type = params[:participation_type_id]
           @par.update!({participation_type_id: par_type}) if par_type
         end
-        format.html { redirect_to @project, notice: 'Project was successfully updated.' }
+        format.html { redirect_to @project, flash: { burst_back:true } }
         format.json { head :no_content }
         format.js {render action: 'show'}
       rescue Exception => e
@@ -91,6 +93,7 @@ class ProjectsController < ApplicationController
   end
 
   def manage_list
+    @@manage_page = project_manage_list_path
     respond_to do |format|
       format.html
       format.js
@@ -98,12 +101,15 @@ class ProjectsController < ApplicationController
   end  
 
   def manage_tag
+    @@manage_page = project_manage_tag_path
     respond_to do |format|
+      format.html
       format.js
     end
   end
 
   private
+    @@manage_page = ProjectsController.instance_method(:project_manage_list_path)
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(session[:user_id])

@@ -64,9 +64,10 @@
     <div class="form-group">
       <label for="name" class="col-sm-2 control-label">Project Participation</label>
       <div class="col-md-10">
+        <% par_id = get_participation_id(@project, @user) %>
         <% ParticipationType.all.each do |par| %>
           <label class="checkbox-inline">
-            <%= radio_button_tag :participation_type_id, par.id%><%= par.name.chomp %>
+            <%= radio_button_tag :participation_type_id, par.id, par.id==par_id%><%= par.name.chomp %>
           </label>
         <% end %>
       </div>
@@ -74,7 +75,7 @@
     <div class="form-group">
       <label for="name" class="col-sm-2 control-label">Project Description</label>
       <div class="col-md-10">
-        <%= f.text_area :description, class: :"form-control", rows: 4%>
+        <%= f.text_area :description, class: :"form-control", rows: 6%>
       </div>
     </div>
     <div class="form-group">
@@ -82,7 +83,7 @@
         <%= f.submit "Submit",class: "btn btn-default pull-left" %>
         <!-- <button type="submit" class="btn btn-default">Submit</button> -->
         <span>  </span>
-        <%= link_to project_manage_list_path do %>
+        <%= link_to get_back_link do %>
           <%= button_tag "Cancel", class: "btn btn-default", type: :button %>
         <% end %>         
       </div>

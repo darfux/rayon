@@ -11,6 +11,7 @@
 
 .panel:hover .glyphicon{
 	visibility: visible;
+	text-decoration: none; 
 }
 .panel:hover .panel-heading{
 	background-color: #66CC66;
@@ -21,3 +22,10 @@
 	font-size: 99px;
 	display: none;
 }
+.panel p{
+	word-break:break-all;
+}
+.panel a:link {text-decoration: none; color: #33AA33;}
+.panel a:visited {text-decoration: none;color: #33AA33;}
+.panel a:active {text-decoration: none;color: #33AA33;}
+.panel a:hover {text-decoration: none;color: #336666;}

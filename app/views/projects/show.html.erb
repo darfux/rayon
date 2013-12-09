@@ -1,4 +1,7 @@
 <% content_for :main_content do %>
+<%= stylesheet_link_tag    "project_show", media: "all" %>
+<% end %>
+<% content_for :main_content do %>
 
 <div class="container">
   <% project_info={
@@ -7,14 +10,31 @@
     "Project Date" => @project.start.to_s+' to '+@project.end.to_s,
     "Project Type" => get_type(@project),
     "Project State" => get_state(@project),
-    "Participation Type" => get_participation(@project, @user),
-    "Project Description" => @project.description}
+    "Participation Type" => get_participation(@project, @user)
+  }
     %>
-  <% project_info.each do |dt, dd| %>
-    <%= sanitize gen_li(dt, dd) %>
-  <% end %>
-  <dl class='dl-horizontal'>
-      <dd><%= link_to 'Back', project_manage_list_path %></dd>
-  </dl>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-6">
+        <% project_info.each do |dt, dd| %>
+          <%= sanitize gen_li(dt, dd) %>
+        <% end %>
+      </div>
+
+      <div class="col-md-6">
+        <dl class='dl'>
+          <dt>Project Description:</dt><p></p>
+          <dd><textarea class="form-control" rows="16" disabled="true"><%= @project.description %></textarea></dd>
+        </dl>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row" id="back_link">
+      <% back = @back_link?@back_link : get_back_link %>
+      <%= link_to 'Back', back %>
+  </div>
+
 </div>
 <% end %>

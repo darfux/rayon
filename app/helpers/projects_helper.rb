@@ -3,12 +3,12 @@ module ProjectsHelper
     User.find_by_id(session[:user_id])
   end
 
-  def get_brief(project)
+  def get_brief(project, num=6)
   	description = project.description
-  	if description[0..6].ascii_only?
-  		project.description[0..12] << '...'
+  	if description[0..num].ascii_only?
+  		project.description[0..num*2] << '...'
   	else
-  		description[0..6] << '...'
+  		description[0..num] << '...'
   	end
   end
 
@@ -29,6 +29,12 @@ module ProjectsHelper
         ProjectUser.where(user_id: user.id, project_id: project.id
             ).first.participation_type_id
                 ).name
+  end
+
+  def get_participation_id(project, user)
+    return nil if project.nil? || user.nil?
+    ProjectUser.where(user_id: user.id, project_id: project.id
+            ).first.participation_type_id
   end
 
   def get_year_options

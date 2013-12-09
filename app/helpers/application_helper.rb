@@ -10,13 +10,10 @@ module ApplicationHelper
   def save_now
     session[:return_to] = request.url
   end
-  def history_back_url(backup_path = request.referer)
-    result = ""
-    if session[:return_to]
-      result = session[:return_to]
-    else
-      result = backup_path
-    end
-    return result
+  def link_back(name)
+    link_to name, get_back_link
+  end
+  def get_back_link
+    request.env["HTTP_REFERER"].blank? ? "/" : request.env["HTTP_REFERER"]
   end
 end
