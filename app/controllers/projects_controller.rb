@@ -23,7 +23,6 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = Project.new
-    params[:_local_user] = User.find_by_id(session[:user_id])
     respond_to do |format|
       format.html
       format.js
@@ -42,7 +41,6 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = Project.new(project_params)
-    p params[:participation_type_id]
     respond_to do |format|
       begin
         Project.transaction do

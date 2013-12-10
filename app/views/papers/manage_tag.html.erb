@@ -1,0 +1,57 @@
+<% content_for :head do %>
+<%= stylesheet_link_tag    "list_tag", media: "all" %>
+<% end %>
+
+<% content_for :pre_header do %>
+<div class="col-md-2 pull-right btn-group">
+    <button type="button" class="btn btn-default glyphicon glyphicon-list" onclick="window.open('<%=paper_manage_list_path %>', '_self')"/>
+    <button type="button" class="btn btn-default glyphicon glyphicon-th-large  active"/>
+</div>
+<% end %>
+
+<% content_for :bottom_nav do %>
+<li><%= link_to 'Create', new_paper_path %></li>
+<% end %>
+
+<% content_for :main_content do %>
+<div class="container">
+    <div class="row">
+        <% counter=1 %>
+        <% @papers.each do |paper|%>
+        <% if counter%4==1 %>
+      <!-- new row -->
+      <div class="col-md-12">
+        <% end %>
+        <div class="col-md-3">
+
+            <div class="panel panel-success">
+              <div class="panel-heading">
+                <h4 class="panel-title"><%= paper.title %>
+                  <cite title="Show">
+                    <%= link_to tag(:span, class: "glyphicon glyphicon-eye-open"), paper_path(paper.id) %>
+                  </cite>
+                  <cite title="Edit">
+                    <%= link_to tag(:span, class: "glyphicon glyphicon-edit"), edit_paper_path(paper.id) %>
+                  </cite>
+                  <cite title="Remove">
+                    <%= link_to tag(:span, class: "glyphicon glyphicon-remove"), paper_path(paper.id), method: :delete, data: { confirm: 'Are you sure to delete this paper?' } %>
+                  </cite>
+                </h4>
+              </div>
+              <ul class="list-group">
+                <li class="list-group-item"><%= get_own_type(paper, @user) %></li>
+                <li class="list-group-item"><%= get_brief_text(paper.publish, 8) %></li>
+              </ul>
+            </div>
+
+          </div>
+          <% if counter%4==0 %>
+        </div >
+        <!-- new row end -->
+          <% end %>
+          <% counter+=1 %>
+        <% end %>
+    </div>      
+</div>
+
+<% end %>

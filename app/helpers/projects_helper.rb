@@ -3,15 +3,6 @@ module ProjectsHelper
     User.find_by_id(session[:user_id])
   end
 
-  def get_brief(project, num=6)
-  	description = project.description
-  	if description[0..num].ascii_only?
-  		project.description[0..num*2] << '...'
-  	else
-  		description[0..num] << '...'
-  	end
-  end
-
   def get_source(project)
     Source.find_by_id(project.source_id).name
   end
@@ -33,8 +24,10 @@ module ProjectsHelper
 
   def get_participation_id(project, user)
     return nil if project.nil? || user.nil?
-    ProjectUser.where(user_id: user.id, project_id: project.id
-            ).first.participation_type_id
+    projectUser = ProjectUser.where(user_id: user.id, project_id: project.id
+            ).first
+    return nil if projectUser.nil?
+    projectUser.participation_type_id
   end
 
   def get_year_options
@@ -45,7 +38,6 @@ module ProjectsHelper
   def get_source_select
     selects = []
     Source.all.each {|source| selects<<[source.name, source.id.to_i]}
-    p selects
     selects
   end
 

@@ -1,0 +1,12 @@
+<% @achievements.each do |achievement|%>
+<tr>
+    <td><%= achievement.id %></td>
+    <td><%= achievement.title %></td>
+    <td><%= get_brief(achievement) %></td>
+    <td>
+        <%= link_to 'show', achievement %>
+        <%= link_to 'edit', edit_achievement_path(achievement.id) %>
+        <%= link_to 'delete', achievement, method: :delete, data: { confirm: 'Are you sure to delete this achievement?' } %>
+    </td>
+</tr>
+<% end %>

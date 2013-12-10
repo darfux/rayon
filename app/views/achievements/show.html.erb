@@ -1,0 +1,35 @@
+<% content_for :main_content do %>
+<%= stylesheet_link_tag    "achievement_show", media: "all" %>
+<% end %>
+<% content_for :main_content do %>
+
+<div class="container">
+  <% achievement_info={
+    "Achievement Title" => @achievement.title
+  }
+    %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-6">
+        <% achievement_info.each do |dt, dd| %>
+          <%= sanitize gen_li(dt, dd) %>
+        <% end %>
+      </div>
+
+      <div class="col-md-6">
+        <dl class='dl'>
+          <dt>Achievement Description:</dt><p></p>
+          <dd><textarea class="form-control" rows="16" disabled="true"><%= @achievement.description %></textarea></dd>
+        </dl>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row" id="back_link">
+      <% back = @back_link?@back_link : get_back_link %>
+      <%= link_to 'Back', back %>
+  </div>
+
+</div>
+<% end %>

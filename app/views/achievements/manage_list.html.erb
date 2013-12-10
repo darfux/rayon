@@ -1,0 +1,37 @@
+<% content_for :head do %>
+<style type="text/css">
+table .manage-cell{
+    width:128px;
+}
+</style>
+<% end %>
+<% content_for :pre_header do %>
+<div class="col-md-2 pull-right btn-group">
+    <button type="button" class="btn btn-default glyphicon glyphicon-list active"/>
+    <button type="button" class="btn btn-default glyphicon glyphicon-th-large" onclick="window.open('<%=achievement_manage_tag_path %>', '_self')"/>
+</div>
+<% end %>
+
+<% content_for :bottom_nav do %>
+<li><%= link_to 'Create', new_achievement_path %></li>
+<% end %>
+
+<% content_for :main_content do %>
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                <tr class="success">
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Brief</th>
+                    <th class="manage-cell">Manage</th>
+                </tr>
+                </thead>
+                <tbody>
+                <%= render 'list_cells'%>
+                </tbody>
+            </table>
+        </div>
+    </div>
+<% end %>

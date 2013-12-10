@@ -7,10 +7,14 @@
 					<% end %>
 				</div>
 				<div class="col-md-4 col-sm-6 panel-block">
-					<div class="panel-elm" id="panel-elm1"><p class="panel-text">Achievements Manage</p></div>
+					<%= link_to(achievement_manage_list_path)  do %>
+						<div class="panel-elm" id="panel-elm1"><p class="panel-text">Achievement Manage</p></div>
+					<% end %>
 				</div>
 				<div class="col-md-4 col-sm-6 panel-block">
-					<div class="panel-elm" id="panel-elm2"><p class="panel-text">Papers Manage</p></div>
+					<%= link_to(paper_manage_list_path)  do %>
+						<div class="panel-elm" id="panel-elm2"><p class="panel-text">Papers Manage</p></div>
+					<% end %>
 				</div>
 			</div>
 			<div class="col-md-12">

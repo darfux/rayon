@@ -2,7 +2,7 @@
 <tr>
     <td><%= project.id %></td>
     <td><%= project.name %></td>
-    <td><%= get_brief(project) %></td>
+    <td><%= get_brief_text(project.description) %></td>
     <td><%= project.start.to_s+'/'+project.end.to_s %></td>
     <td><%= get_state(project) %></td>
     <td><%= get_source(project) %></td>

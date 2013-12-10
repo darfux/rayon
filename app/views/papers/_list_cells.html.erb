@@ -1,0 +1,13 @@
+<% @papers.each do |paper|%>
+<tr>
+    <td><%= paper.id %></td>
+    <td><%= paper.title %></td>
+    <td><%= get_own_type(paper, @user) %></td>
+    <td><%= get_brief_text(paper.publish, 10) %></td>
+    <td>
+        <%= link_to 'show', paper %>
+        <%= link_to 'edit', edit_paper_path(paper.id) %>
+        <%= link_to 'delete', paper, method: :delete, data: { confirm: 'Are you sure to delete this paper?' } %>
+    </td>
+</tr>
+<% end %>

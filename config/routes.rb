@@ -15,7 +15,15 @@ RayonPre::Application.routes.draw do
   get "projects/manage_list" => "projects#manage_list", as: "project_manage_list"#should before the 'resource :project'  
   get "projects/manage_tag" => "projects#manage_tag", as: "project_manage_tag"#should before the 'resource :project'
   
+  get "achievements/manage_list" => "achievements#manage_list", as: "achievement_manage_list"#should before the 'resource :achievement'  
+  get "achievements/manage_tag" => "achievements#manage_tag", as: "achievement_manage_tag"#should before the 'resource :achievement'
+   
+  get "paper/manage_list" => "papers#manage_list", as: "paper_manage_list"#should before the 'resource :paper'  
+  get "paper/manage_tag" => "papers#manage_tag", as: "paper_manage_tag"#should before the 'resource :paper'
+  
   resources :projects
+  resources :achievements
+  resources :papers
   resources :users
   resources :research_directions
 
