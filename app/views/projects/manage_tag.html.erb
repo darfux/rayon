@@ -20,11 +20,11 @@
         <% @projects.each do |project|%>
         <% if counter%4==1 %>
       <!-- new row -->
-      <div class="col-md-12">
+      <div class="col-md-12 project">
         <% end %>
         <div class="col-md-3">
 
-            <div class="panel panel-success">
+            <div class="panel">
               <div class="panel-heading">
                 <h4 class="panel-title"><%= project.name %>
                   <cite title="Show">

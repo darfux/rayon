@@ -1,3 +1,8 @@
+.panel{
+	border-style: solid;
+	border-width: 1px;
+	border-color: #FFFF99;
+}
 .panel .glyphicon{
 	visibility: hidden;/*important,not display*/
 	margin-left: 10px;
@@ -5,27 +10,24 @@
 	text-align: right;
 	cursor: pointer;
 }
-.panel .glyphicon:hover{
-	
-}
 
 .panel:hover .glyphicon{
 	visibility: visible;
 	text-decoration: none; 
 }
-.panel:hover .panel-heading{
-	background-color: #66CC66;
-};
 
-#title{
-	background-color: #123456;
-	font-size: 99px;
-	display: none;
-}
 .panel p{
 	word-break:break-all;
 }
-.panel a:link {text-decoration: none; color: #33AA33;}
-.panel a:visited {text-decoration: none;color: #33AA33;}
-.panel a:active {text-decoration: none;color: #33AA33;}
-.panel a:hover {text-decoration: none;color: #336666;}
+.panel a:link {text-decoration: none; color: #AAAA55;}
+.panel a:visited {text-decoration: none;color: #AAAA55;}
+.panel a:active {text-decoration: none;color: #AAAA55;}
+.panel a:hover {text-decoration: none;color: #AABB66;}
+
+.project .panel .panel-heading{
+	background-color: #FFFF99;
+}
+.project .panel:hover .panel-heading{
+	background-color: #DDDD88;
+};
+
