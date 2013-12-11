@@ -1,8 +1,3 @@
-.panel{
-	border-style: solid;
-	border-width: 1px;
-	border-color: #FFFF99;
-}
 .panel .glyphicon{
 	visibility: hidden;/*important,not display*/
 	margin-left: 10px;
@@ -19,10 +14,19 @@
 .panel p{
 	word-break:break-all;
 }
-.panel a:link {text-decoration: none; color: #AAAA55;}
-.panel a:visited {text-decoration: none;color: #AAAA55;}
-.panel a:active {text-decoration: none;color: #AAAA55;}
-.panel a:hover {text-decoration: none;color: #AABB66;}
+
+/*======project==========*/
+.project .panel a{text-decoration: none; color: #AAAA55;}
+.project .panel a:link {text-decoration: none; color: #AAAA55;}
+.project .panel a:visited {text-decoration: none;color: #AAAA55;}
+.project .panel a:active {text-decoration: none;color: #AAAA55;}
+.project .panel a:hover {text-decoration: none;color: #AABB66;}
+
+.project .panel{
+	border-style: solid;
+	border-width: 1px;
+	border-color: #FFFF99;
+}
 
 .project .panel .panel-heading{
 	background-color: #FFFF99;
@@ -31,3 +35,43 @@
 	background-color: #DDDD88;
 };
 
+/*======achievement==========*/
+.achievement .panel a{text-decoration: none; color: #9999BB;}
+.achievement .panel a:link {text-decoration: none; color: #9999BB;}
+.achievement .panel a:visited {text-decoration: none;color: #9999BB;}
+.achievement .panel a:active {text-decoration: none;color: #9999BB;}
+.achievement .panel a:hover {text-decoration: none;color: #7777AA;}
+
+.achievement .panel{
+	border-style: solid;
+	border-width: 1px;
+	border-color: #666699;
+}
+
+.achievement .panel .panel-heading{
+	color: white;
+	background-color: #666699;
+}
+.achievement .panel:hover .panel-heading{
+	background-color: #444488;
+};
+/*======paper==========*/
+.paper .panel a{text-decoration: none; color: #999999;}
+.paper .panel a:link {text-decoration: none; color: #999999;}
+.paper .panel a:visited {text-decoration: none;color: #999999;}
+.paper .panel a:active {text-decoration: none;color: #999999;}
+.paper .panel a:hover {text-decoration: none;color: #666666;}
+
+.paper .panel{
+	border-style: solid;
+	border-width: 1px;
+	border-color: #DDDDDD;
+}
+
+.paper .panel .panel-heading{
+	color: white;
+	background-color: #DDDDDD;
+}
+.paper .panel:hover .panel-heading{
+	background-color: #BBBBBB;
+};

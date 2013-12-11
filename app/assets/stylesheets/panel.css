@@ -20,7 +20,12 @@
 	text-align: right;
 	word-wrap: break-word;
 }
-
+.panel span{
+	font-size: 64px;
+	position: absolute;
+	top: 60%;
+	left: 15%;
+}
 #panel-elm0{background-color: #FFFF99;} #panel-elm1{background-color: #666699;} #panel-elm2{background-color: #DDDDDD;}
 
 #panel-elm4{background-color: #FFCC99;} #panel-elm3{background-color: #993333;} #panel-elm5{background-color: #669966;}

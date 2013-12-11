@@ -12,16 +12,20 @@ table .manage-cell{
 </div>
 <% end %>
 
+<% content_for :head do %>
+<%= stylesheet_link_tag    "manage_list", media: "all" %>
+<% end %>
+
 <% content_for :bottom_nav do %>
 <li><%= link_to 'Create', new_achievement_path %></li>
 <% end %>
 
 <% content_for :main_content do %>
     <div class="container">
-        <div class="table-responsive">
-            <table class="table table-hover">
+        <div class="table-responsive achievement-manage">
+            <table class="table table-hover  table-striped">
                 <thead>
-                <tr class="success">
+                <tr>
                     <th>Id</th>
                     <th>Title</th>
                     <th>Brief</th>
