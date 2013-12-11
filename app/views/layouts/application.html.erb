@@ -17,7 +17,7 @@
 		<div class="col-md-12">
 			<div class="page-header" id="header">
 				<%= yield :pre_header %>
-				<h2>Rayon<%= yield :header_small_title%></h2>
+				<h2>对口支援联合科研平台<small><%= yield :header_small_title%></small></h2>
 			</div>
 			<div id="bottom-nav">
 				<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
@@ -31,12 +31,12 @@
 				  </div>
 				  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				    <ul class="nav navbar-nav"  id="bot-nav-left">
-				      <li class="active"><%= link_to 'Home', welcome_path%></li>
+				      <li class="active"><%= link_to '主页', welcome_path%></li>
 				      <%= yield :bottom_nav %>
 				    </ul>
 				    <ul class="nav navbar-nav navbar-right">
-				    	<li><%= link_to 'logout', logout_path, :method => :delete%></li>
-				    	<li><a href="#">About</a></li>
+				    	<li><%= link_to '注销', logout_path, :method => :delete%></li>
+				    	<li><a href="#">关于</a></li>
 				  </div>
 				</nav>
 			</div>

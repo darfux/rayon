@@ -1,18 +1,18 @@
 <%= form_for(@project, html: {class: :"form-horizontal", role: "form"}) do |f|%>
     <div class="form-group">
-      <label for="name" class="col-sm-2 control-label">Project Name</label>
+      <label for="name" class="col-sm-2 control-label">项目名称</label>
       <div class="col-sm-10">
         <%= f.text_field :name, class: :"form-control", placeholder: @project.name, required: true, autofocus: true%>
       </div>
       </div>
     <div class="form-group">
-            <label for="name" class="col-sm-2 control-label">Project Source</label>
+            <label for="name" class="col-sm-2 control-label">项目来源</label>
             <div class="col-sm-10">
               <%= f.select :source_id, get_source_select, {},{class: :"form-control", required: true, autofocus: false}%>
             </div>
         </div>
       <div class="form-group">
-      <label for="date" class="col-sm-2 control-label">Project Date</label>
+      <label for="date" class="col-sm-2 control-label">项目时间</label>
       <div class="col-sm-10">
         <div class='col-md-6'>
           <div class="form-group">
@@ -42,7 +42,7 @@
         });
       </script>
     <div class="form-group">
-      <label for="name" class="col-sm-2 control-label">Project Type</label>
+      <label for="name" class="col-sm-2 control-label">项目类型</label>
       <div class="col-md-10">
         <% ProjectType.all.each do |type| %>
           <label class="checkbox-inline">
@@ -52,7 +52,7 @@
       </div>
     </div>
     <div class="form-group">
-      <label for="name" class="col-sm-2 control-label">Project State</label>
+      <label for="name" class="col-sm-2 control-label">项目状态</label>
       <div class="col-md-10">
         <% ProjectState.all.each do |state| %>
           <label class="checkbox-inline">
@@ -62,7 +62,7 @@
       </div>
     </div>
     <div class="form-group">
-      <label for="name" class="col-sm-2 control-label">Project Participation</label>
+      <label for="name" class="col-sm-2 control-label">参与方式</label>
       <div class="col-md-10">
         <% par_id = get_participation_id(@project, @user) %>
         <% ParticipationType.all.each do |par| %>
@@ -73,18 +73,18 @@
       </div>
     </div>
     <div class="form-group">
-      <label for="name" class="col-sm-2 control-label">Project Description</label>
+      <label for="name" class="col-sm-2 control-label">项目描述</label>
       <div class="col-md-10">
         <%= f.text_area :description, class: :"form-control", rows: 6%>
       </div>
     </div>
     <div class="form-group">
       <div class="col-sm-offset-2 col-md-10">
-        <%= f.submit "Submit",class: "btn btn-default pull-left" %>
+        <%= f.submit "提交",class: "btn btn-default pull-left" %>
         <!-- <button type="submit" class="btn btn-default">Submit</button> -->
         <span>  </span>
         <%= link_to get_back_link do %>
-          <%= button_tag "Cancel", class: "btn btn-default", type: :button %>
+          <%= button_tag "取消", class: "btn btn-default", type: :button %>
         <% end %>         
       </div>
     </div>

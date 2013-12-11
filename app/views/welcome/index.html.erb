@@ -16,8 +16,8 @@
   <% if flash[:notice]==:login%>
     <div class="jumbotron" id="welcome-jumbotron">
       <h3><%= @user.uid %></h3>
-      <h1>Welcome Back!</h1>
-      <a class="btn btn-primary btn-lg" role="button" id="start-btn">Start</a>
+      <h1>欢迎回来!</h1>
+      <a class="btn btn-primary btn-lg" role="button" id="start-btn">开始</a>
     </div>
   <% end %>
   <%= render 'panel'%>

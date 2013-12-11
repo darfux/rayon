@@ -16,8 +16,12 @@ table .manage-cell{
 <%= stylesheet_link_tag    "manage_list", media: "all" %>
 <% end %>
 
+<% content_for :header_small_title do %>
+成果管理
+<% end %>
+
 <% content_for :bottom_nav do %>
-<li><%= link_to 'Create', new_achievement_path %></li>
+<li><%= link_to '创建', new_achievement_path %></li>
 <% end %>
 
 <% content_for :main_content do %>
@@ -27,9 +31,9 @@ table .manage-cell{
                 <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Title</th>
-                    <th>Brief</th>
-                    <th class="manage-cell">Manage</th>
+                    <th>成果标题</th>
+                    <th>简介</th>
+                    <th class="manage-cell">管理</th>
                 </tr>
                 </thead>
                 <tbody>

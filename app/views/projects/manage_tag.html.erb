@@ -9,8 +9,12 @@
 </div>
 <% end %>
 
+<% content_for :header_small_title do %>
+项目管理
+<% end %>
+
 <% content_for :bottom_nav do %>
-<li><%= link_to 'Create', new_project_path %></li>
+<li><%= link_to '创建', new_project_path %></li>
 <% end %>
 
 <% content_for :main_content do %>
@@ -27,13 +31,13 @@
             <div class="panel">
               <div class="panel-heading">
                 <h4 class="panel-title"><%= project.name %>
-                  <cite title="Show">
+                  <cite title="显示">
                     <%= link_to tag(:span, class: "glyphicon glyphicon-eye-open"), project_path(project.id) %>
                   </cite>
-                  <cite title="Edit">
+                  <cite title="编辑">
                     <%= link_to tag(:span, class: "glyphicon glyphicon-edit"), edit_project_path(project.id) %>
                   </cite>
-                  <cite title="Remove">
+                  <cite title="删除">
                     <%= link_to tag(:span, class: "glyphicon glyphicon-remove"), project_path(project.id), method: :delete, data: { confirm: 'Are you sure to delete this project?' } %>
                   </cite>
                 </h4>

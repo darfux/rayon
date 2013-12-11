@@ -5,12 +5,12 @@
 
 <div class="container">
   <% project_info={
-    "Project Name" => @project.name,
-    "Project Source" => get_source(@project),
-    "Project Date" => @project.start.to_s+' to '+@project.end.to_s,
-    "Project Type" => get_type(@project),
-    "Project State" => get_state(@project),
-    "Participation Type" => get_participation(@project, @user)
+    "项目名称" => @project.name,
+    "项目来源e" => get_source(@project),
+    "项目时间" => @project.start.to_s+' to '+@project.end.to_s,
+    "项目类型" => get_type(@project),
+    "项目状态" => get_state(@project),
+    "参与方式" => get_participation(@project, @user)
   }
     %>
   <div class="row">
@@ -23,7 +23,7 @@
 
       <div class="col-md-6">
         <dl class='dl'>
-          <dt>Project Description:</dt><p></p>
+          <dt>项目描述:</dt><p></p>
           <dd><textarea class="form-control" rows="16" disabled="true"><%= @project.description %></textarea></dd>
         </dl>
       </div>
@@ -33,7 +33,7 @@
 
   <div class="row" id="back_link">
       <% back = @back_link?@back_link : get_back_link %>
-      <%= link_to 'Back', back %>
+      <%= link_to '返回', back %>
   </div>
 
 </div>

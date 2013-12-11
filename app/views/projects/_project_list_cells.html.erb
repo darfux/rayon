@@ -8,9 +8,9 @@
     <td><%= get_source(project) %></td>
     <td><%= get_participation(project, @user) %></td>
     <td>
-        <%= link_to 'show', project %>
-        <%= link_to 'edit', edit_project_path(project.id) %>
-        <%= link_to 'delete', project, method: :delete, data: { confirm: 'Are you sure to delete this project?' } %>
+        <%= link_to '显示', project %>
+        <%= link_to '编辑', edit_project_path(project.id) %>
+        <%= link_to '删除', project, method: :delete, data: { confirm: 'Are you sure to delete this project?' } %>
     </td>
 </tr>
 <% end %>

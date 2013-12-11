@@ -9,8 +9,12 @@
 <%= stylesheet_link_tag    "manage_list", media: "all" %>
 <% end %>
 
+<% content_for :header_small_title do %>
+项目管理
+<% end %>
+
 <% content_for :bottom_nav do %>
-<li><%= link_to 'Create', new_project_path %></li>
+<li><%= link_to '创建', new_project_path %></li>
 <% end %>
 
 <% content_for :main_content do %>
@@ -20,13 +24,13 @@
                 <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Name</th>
-                    <th>Brief</th>
-                    <th>Start/End</th>
-                    <th>State</th>
-                    <th>Source</th>
-                    <th>Participation</th>
-                    <th>Manage</th>
+                    <th>项目名称</th>
+                    <th>简介</th>
+                    <th>开始/结束时间</th>
+                    <th>状态</th>
+                    <th>来源</th>
+                    <th>类型</th>
+                    <th>管理</th>
                 </tr>
                 </thead>
                 <tbody>

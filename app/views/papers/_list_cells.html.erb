@@ -5,9 +5,9 @@
     <td><%= get_own_type(paper, @user) %></td>
     <td><%= get_brief_text(paper.publish, 10) %></td>
     <td>
-        <%= link_to 'show', paper %>
-        <%= link_to 'edit', edit_paper_path(paper.id) %>
-        <%= link_to 'delete', paper, method: :delete, data: { confirm: 'Are you sure to delete this paper?' } %>
+        <%= link_to '显示', paper %>
+        <%= link_to '编辑', edit_paper_path(paper.id) %>
+        <%= link_to '删除', paper, method: :delete, data: { confirm: 'Are you sure to delete this paper?' } %>
     </td>
 </tr>
 <% end %>

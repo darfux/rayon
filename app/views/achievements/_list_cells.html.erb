@@ -4,9 +4,9 @@
     <td><%= achievement.title %></td>
     <td><%= get_brief(achievement) %></td>
     <td>
-        <%= link_to 'show', achievement %>
-        <%= link_to 'edit', edit_achievement_path(achievement.id) %>
-        <%= link_to 'delete', achievement, method: :delete, data: { confirm: 'Are you sure to delete this achievement?' } %>
+        <%= link_to '显示', achievement %>
+        <%= link_to '编辑', edit_achievement_path(achievement.id) %>
+        <%= link_to '删除', achievement, method: :delete, data: { confirm: 'Are you sure to delete this achievement?' } %>
     </td>
 </tr>
 <% end %>

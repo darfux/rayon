@@ -9,8 +9,12 @@
 </div>
 <% end %>
 
+<% content_for :header_small_title do %>
+成果管理
+<% end %>
+
 <% content_for :bottom_nav do %>
-<li><%= link_to 'Create', new_achievement_path %></li>
+<li><%= link_to '创建', new_achievement_path %></li>
 <% end %>
 
 <% content_for :main_content do %>
@@ -27,13 +31,13 @@
             <div class="panel">
               <div class="panel-heading">
                 <h4 class="panel-title"><%= achievement.title %>
-                  <cite title="Show">
+                  <cite title="显示">
                     <%= link_to tag(:span, class: "glyphicon glyphicon-eye-open"), achievement_path(achievement.id) %>
                   </cite>
-                  <cite title="Edit">
+                  <cite title="编辑">
                     <%= link_to tag(:span, class: "glyphicon glyphicon-edit"), edit_achievement_path(achievement.id) %>
                   </cite>
-                  <cite title="Remove">
+                  <cite title="删除">
                     <%= link_to tag(:span, class: "glyphicon glyphicon-remove"), achievement_path(achievement.id), method: :delete, data: { confirm: 'Are you sure to delete this achievement?' } %>
                   </cite>
                 </h4>
