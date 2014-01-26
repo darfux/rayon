@@ -6,7 +6,7 @@
 <div class="container">
   <% project_info={
     "项目名称" => @project.name,
-    "项目来源e" => get_source(@project),
+    "项目来源" => get_source(@project),
     "项目时间" => @project.start.to_s+' to '+@project.end.to_s,
     "项目类型" => get_type(@project),
     "项目状态" => get_state(@project),

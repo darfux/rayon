@@ -1,7 +1,0 @@
-<% if @saved %>
-<%= sanitize "alert('success')" %>
-<% end %>
-<% unless @user.errors.any? %>
-	$('#user_info').html("<%= j render @user %>")
-<% end %>
-$('#update_form').html("<%= j render 'form' %>")
