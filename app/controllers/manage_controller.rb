@@ -1,4 +1,5 @@
 class ManageController < ApplicationController
-  def index
+  def handle
+  	render 'index'
   end
 end

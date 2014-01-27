@@ -9,7 +9,7 @@ RayonPre::Application.routes.draw do
   get "search" => "search#index"
   post "search/result" => "search#search"
 
-  get "manage/index"
+  get "manage/:object" => "manage#handle"
   get "manage" => "manage#index", as: "manage"
 
   get "projects/manage_list" => "projects#manage_list", as: "project_manage_list"#should before the 'resource :project'  
