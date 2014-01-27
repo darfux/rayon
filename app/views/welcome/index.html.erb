@@ -1,7 +1,24 @@
+<%#
+  Use anchor '#index' and js to improve the experience
+  when user click the browser's back button and back to 
+  the welcome index, as the page will not show the start 
+  content again, which will be the main panel instead.
+%>
 <% content_for :head do %>
   <%= stylesheet_link_tag "main", media: "all" %>
   <%= stylesheet_link_tag "panel", media: "all" %>
+  <% if flash[:notice]==:login%>
   <script type="text/javascript">
+  $(function(){
+    $('#panel').css({"display":"none"});
+    cURL=location.href;
+    urlArr=cURL.split("#");
+    if(urlArr[1]=="index")
+    {
+      $('#welcome-jumbotron').css({"display":"none"});
+      $('#panel').css({"display":"block"});
+    }
+  });
   $(function(){
     $("#start-btn").click(function(){
       $("#welcome-jumbotron").fadeOut("normal", function(){
@@ -11,6 +28,7 @@
     });
   });
   </script>
+  <% end %>
 <% end %>
 
 <% content_for :main_content do %>
@@ -18,13 +36,8 @@
     <div class="jumbotron" id="welcome-jumbotron">
       <h3><%= @user.uid %></h3>
       <h1>欢迎回来!</h1>
-      <a class="btn btn-primary btn-lg" role="button" id="start-btn">开始</a>
+      <a class="btn btn-primary btn-lg" role="button" id="start-btn" href="#index">开始</a>
     </div>
   <% end %>
   <%= render 'panel'%>
-  <% if flash[:notice]==:login%>
-    <script type="text/javascript">
-      $('#panel').css({"display":"none"});
-    </script>
-  <% end %>
 <% end %>
