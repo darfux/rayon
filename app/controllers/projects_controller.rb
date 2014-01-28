@@ -92,10 +92,11 @@ class ProjectsController < ApplicationController
 
   def manage_list
     @@manage_page = project_manage_list_path
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    render "shared/manage_list"
+    # respond_to do |format|
+    #   format.html
+    #   format.js
+    # end
   end  
 
   def manage_tag
