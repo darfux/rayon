@@ -1,9 +1,9 @@
 class ProjectsController < ApplicationController
-  before_action :set_meta
   before_action :set_project, only: [:show, :update, :destroy, :edit]
   before_action :set_user, only: [:show, :create, :edit, :manage_list, :manage_tag, :update]
   before_action :set_projects, only: [:manage_list, :manage_tag]
   before_action :set_participation, only: [:update]
+  before_action :set_meta
 
   # GET /projects
   # GET /projects.json
@@ -112,8 +112,14 @@ class ProjectsController < ApplicationController
     @@manage_page = ProjectsController.instance_method(:project_manage_list_path)
     # Use callbacks to share common setup or constraints between actions.
     def set_meta
+      @header_meta = "项目管理"
       @obj_metas = [
-        {title: :id, attri: :id}
+        {title: "项目名称", attri: :name},
+        {title: "简介", attri: :description, handler: :get_brief_text},
+        {title: "开始/结束时间", attri: :during},
+        {title: "状态", attri: :state},
+        {title: "来源", attri: :source},
+        {title: "类型", attri: :participation, params: @user}
       ]
     end
 
