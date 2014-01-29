@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_action :set_meta
   before_action :set_project, only: [:show, :update, :destroy, :edit]
   before_action :set_user, only: [:show, :create, :edit, :manage_list, :manage_tag, :update]
   before_action :set_projects, only: [:manage_list, :manage_tag]
@@ -110,12 +111,19 @@ class ProjectsController < ApplicationController
   private
     @@manage_page = ProjectsController.instance_method(:project_manage_list_path)
     # Use callbacks to share common setup or constraints between actions.
+    def set_meta
+      @obj_metas = [
+        {title: :id, attri: :id}
+      ]
+    end
+
     def set_user
       @user = User.find(session[:user_id])
     end
 
     def set_projects
       @projects = @user.projects.to_a
+      @objects = @projects
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_project

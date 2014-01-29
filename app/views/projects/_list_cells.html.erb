@@ -1,0 +1,22 @@
+<thead>
+<tr>
+    <% @obj_metas.each do |meta| %>
+        <th><%= meta[:title] %></th>
+    <% end %>
+</tr>
+</thead>
+<tbody>
+    <% obj_name = @objects[0].class.to_s.downcase %>
+    <% @objects.each do |object|%>
+    <tr>
+        <% @obj_metas.each do |meta| %>
+            <td><%= object.send(meta[:attri]) %></td>
+        <% end %>
+        <td>
+            <%= link_to '显示', object %>
+            <%= link_to '编辑', self.send("edit_#{obj_name}_path", object.id) %>
+            <%= link_to '删除', object, method: :delete, data: { confirm: "Are you sure to delete this #{obj_name}?" } %>
+        </td>
+    </tr>
+    <% end %>
+</tbody>

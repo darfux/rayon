@@ -1,0 +1,28 @@
+<% content_for :pre_header do %>
+<div class="col-md-2 pull-right btn-group">
+    <button type="button" class="btn btn-default glyphicon glyphicon-list active"/>
+    <button type="button" class="btn btn-default glyphicon glyphicon-th-large" onclick="window.open('<%=project_manage_tag_path %>', '_self')"/>
+</div>
+<% end %>
+
+<% content_for :head do %>
+<%= stylesheet_link_tag    "manage_list", media: "all" %>
+<% end %>
+
+<% content_for :header_small_title do %>
+项目管理
+<% end %>
+
+<% content_for :bottom_nav do %>
+<li><%= link_to '创建', new_project_path %></li>
+<% end %>
+
+<% content_for :main_content do %>
+    <div class="container">
+        <div class="table-responsive project-manage">
+            <table class="table table-hover table-striped">
+                <%= render 'list_cells'%>
+            </table>
+        </div>
+    </div>
+<% end %>

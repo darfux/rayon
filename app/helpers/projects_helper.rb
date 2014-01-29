@@ -1,4 +1,8 @@
 module ProjectsHelper
+  def get_content(project, attr_name)
+    p self.class
+    self.method("get_#{attr_name}").call
+  end
   def get_owner
     User.find_by_id(session[:user_id])
   end
@@ -48,4 +52,9 @@ module ProjectsHelper
       "  <dd>#{dd}</dd>"+
       "</dl>"
   end
+
+  def self.method_missing(name,*arg)
+    raise name.to_s
+  end
+
 end
