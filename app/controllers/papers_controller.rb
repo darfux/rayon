@@ -3,7 +3,7 @@ class PapersController < ApplicationController
   before_action :set_user, only: [:show, :create, :edit, :manage_list, :manage_tag, :update]
   before_action :set_papers, only: [:manage_list, :manage_tag]
   before_action :set_participation, only: [:update]
-
+  before_action :set_meta
   # GET /papers
   # GET /papers.json
   def index
@@ -92,10 +92,7 @@ class PapersController < ApplicationController
 
   def manage_list
     @@manage_page = paper_manage_list_path
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    render "shared/manage_list"
   end  
 
   def manage_tag
@@ -109,12 +106,24 @@ class PapersController < ApplicationController
   private
     @@manage_page = PapersController.instance_method(:paper_manage_list_path)
     # Use callbacks to share common setup or constraints between actions.
+
+    def set_meta
+      @header_meta = "文献管理"
+      @obj_name = get_obj_name
+      @obj_metas = [
+        {title: "论文标题", attri: :title},
+        {title: "身份", attri: :own_type, params: @user},
+        {title: "发表于", attri: :publish, handler: :get_brief_text}
+      ]
+    end
+
     def set_user
       @user = User.find(session[:user_id])
     end
 
     def set_papers
       @papers = @user.papers.to_a
+      @objects = @papers
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_paper

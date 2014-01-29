@@ -2,6 +2,7 @@ class AchievementsController < ApplicationController
 	before_action :set_achievement, only: [:show, :update, :destroy, :edit]
   before_action :set_user, only: [:show, :create, :edit, :manage_list, :manage_tag, :update]
   before_action :set_achievements, only: [:manage_list, :manage_tag]
+  before_action :set_meta
 
   # GET /achievements
   # GET /achievements.json
@@ -87,10 +88,7 @@ class AchievementsController < ApplicationController
 
   def manage_list
     @@manage_page = achievement_manage_list_path
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    render "shared/manage_list"
   end  
 
   def manage_tag
@@ -104,12 +102,22 @@ class AchievementsController < ApplicationController
   private
     @@manage_page = AchievementsController.instance_method(:achievement_manage_list_path)
     # Use callbacks to share common setup or constraints between actions.
+    def set_meta
+      @header_meta = "成果管理"
+      @obj_name = get_obj_name
+      @obj_metas = [
+        {title: "成果标题", attri: :title},
+        {title: "简介", attri: :description, handler: :get_brief_text}
+      ]
+    end
+
     def set_user
       @user = User.find(session[:user_id])
     end
 
     def set_achievements
       @achievements = @user.achievements.to_a
+      @objects = @achievements
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_achievement

@@ -10,4 +10,8 @@ class ApplicationController < ActionController::Base
       	redirect_to root_url
     	end
   	end
+
+    def get_obj_name
+      return self.class.to_s[0..-11].downcase.singularize
+    end
 end

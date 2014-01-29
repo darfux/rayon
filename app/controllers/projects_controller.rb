@@ -113,6 +113,7 @@ class ProjectsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_meta
       @header_meta = "项目管理"
+      @obj_name = get_obj_name
       @obj_metas = [
         {title: "项目名称", attri: :name},
         {title: "简介", attri: :description, handler: :get_brief_text},
