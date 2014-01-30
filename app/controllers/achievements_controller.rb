@@ -105,9 +105,11 @@ class AchievementsController < ApplicationController
     def set_meta
       @header_meta = "成果管理"
       @obj_name = get_obj_name
-      @obj_metas = [
+      @obj_list_metas = [
         {title: "成果标题", attri: :title},
-        {title: "简介", attri: :description, handler: :get_brief_text}
+        {title: "简介", attri: :description, 
+          callback: {handler: :get_brief_text, params: 10}
+        }
       ]
     end
 

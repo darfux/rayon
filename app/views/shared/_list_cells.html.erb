@@ -1,6 +1,6 @@
 <thead>
 <tr>
-    <% @obj_metas.each do |meta| %>
+    <% @obj_list_metas.each do |meta| %>
         <th><%= meta[:title] %></th>
     <% end %>
     <th>管理</th>
@@ -9,7 +9,7 @@
 <tbody>
     <% @objects.each do |object|%>
     <tr>
-        <% @obj_metas.each do |meta| %>
+        <% @obj_list_metas.each do |meta| %>
             <td><%= get_content(object, meta) %></td>
         <% end %>
         <td>

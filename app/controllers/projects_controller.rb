@@ -114,9 +114,11 @@ class ProjectsController < ApplicationController
     def set_meta
       @header_meta = "项目管理"
       @obj_name = get_obj_name
-      @obj_metas = [
+      @obj_list_metas = [
         {title: "项目名称", attri: :name},
-        {title: "简介", attri: :description, handler: :get_brief_text},
+        {title: "简介", attri: :description, 
+          callback: {handler: :get_brief_text}
+        },
         {title: "开始/结束时间", attri: :during},
         {title: "状态", attri: :state},
         {title: "来源", attri: :source},

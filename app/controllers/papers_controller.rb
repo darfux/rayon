@@ -110,10 +110,12 @@ class PapersController < ApplicationController
     def set_meta
       @header_meta = "文献管理"
       @obj_name = get_obj_name
-      @obj_metas = [
+      @obj_list_metas = [
         {title: "论文标题", attri: :title},
         {title: "身份", attri: :own_type, params: @user},
-        {title: "发表于", attri: :publish, handler: :get_brief_text}
+        {title: "发表于", attri: :publish, 
+          callback: {handler: :get_brief_text}
+        }
       ]
     end
 
