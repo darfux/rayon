@@ -110,6 +110,12 @@ class AchievementsController < ApplicationController
         {title: "简介", attri: :description, 
           callback: {handler: :get_brief_text, params: 10}
         }
+      ]      
+      @obj_list_metas = [
+        {title: "成果标题", attri: :title},
+        {title: "简介", attri: :description, 
+          callback: {handler: :get_brief_text, params: 10}
+        }
       ]
     end
 

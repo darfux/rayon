@@ -1,16 +1,4 @@
 module ProjectsHelper
-  def get_content(project, meta)
-    params = meta[:params]
-    handler = meta[:handler]
-    content = ""
-    if params
-      content = project.send(meta[:attri], params)
-    else
-      content = project.send(meta[:attri])
-    end
-    return content unless handler
-    self.send(handler, content)
-  end
  #  def get_owner
  #    User.find_by_id(session[:user_id])
  #  end
