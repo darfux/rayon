@@ -4,7 +4,7 @@
 
 <% content_for :pre_header do %>
 <div class="col-md-2 pull-right btn-group">
-    <button type="button" class="btn btn-default glyphicon glyphicon-list" onclick="window.open('<%= achievement_manage_list_path %>', '_self')"/>
+    <button type="button" class="btn btn-default glyphicon glyphicon-list" onclick="window.open('<%= self.send("#{@obj_name}_manage_list_path") %>', '_self')"/>
     <button type="button" class="btn btn-default glyphicon glyphicon-th-large  active"/>
 </div>
 <% end %>
@@ -23,6 +23,7 @@
       <% counter=1 %>
       <% @objects.each do |object|%>
       <% if counter%4==1 %>
+      
       <!-- new row -->
       <div class="col-md-12 <%= @obj_name %>">
       <% end %>
@@ -31,21 +32,21 @@
 
             <div class="panel">
               <div class="panel-heading">
-                <h4 class="panel-title"><%= object.title %>
+                <h4 class="panel-title"><%= object.name %>
                   <cite title="显示">
-                    <%= link_to tag(:span, class: "glyphicon glyphicon-eye-open"), achievement_path(achievement.id) %>
+                    <%= link_to tag(:span, class: "glyphicon glyphicon-eye-open"), self.send("#{@obj_name}_path", object.id) %>
                   </cite>
                   <cite title="编辑">
-                    <%= link_to tag(:span, class: "glyphicon glyphicon-edit"), edit_achievement_path(achievement.id) %>
+                    <%= link_to tag(:span, class: "glyphicon glyphicon-edit"), self.send("edit_#{@obj_name}_path", object.id) %>
                   </cite>
                   <cite title="删除">
-                    <%= link_to tag(:span, class: "glyphicon glyphicon-remove"), achievement_path(achievement.id), method: :delete, data: { confirm: 'Are you sure to delete this achievement?' } %>
+                    <%= link_to tag(:span, class: "glyphicon glyphicon-remove"), self.send("#{@obj_name}_path", object.id), method: :delete, data: { confirm: 'Are you sure to delete this project?' } %>
                   </cite>
                 </h4>
               </div>
               <div class="panel-body">
                 <p>
-                  <%= get_brief(achievement, 24) %>
+                  <%#= get_brief(achievement, 24) %>
                 </p>
               </div>
             </div>
@@ -53,6 +54,7 @@
           </div>
         <% if counter%4==0 %>
         <!-- new row end -->
+
         </div >
         <% end %>
 

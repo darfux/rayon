@@ -102,10 +102,7 @@ class ProjectsController < ApplicationController
 
   def manage_tag
     @@manage_page = project_manage_tag_path
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    render "shared/manage_tag"
   end
 
   private
@@ -115,6 +112,16 @@ class ProjectsController < ApplicationController
       @header_meta = "项目管理"
       @obj_name = get_obj_name
       @obj_list_metas = [
+        {title: "项目名称", attri: :name},
+        {title: "简介", attri: :description, 
+          callback: {handler: :get_brief_text}
+        },
+        {title: "开始/结束时间", attri: :during},
+        {title: "状态", attri: :state},
+        {title: "来源", attri: :source},
+        {title: "类型", attri: :participation, params: @user}
+      ]
+      @obj_tag_metas = [
         {title: "项目名称", attri: :name},
         {title: "简介", attri: :description, 
           callback: {handler: :get_brief_text}
