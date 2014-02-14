@@ -122,14 +122,12 @@ class ProjectsController < ApplicationController
         {title: "类型", attri: :participation, params: @user}
       ]
       @obj_tag_metas = [
-        {title: "项目名称", attri: :name},
-        {title: "简介", attri: :description, 
-          callback: {handler: :get_brief_text}
-        },
-        {title: "开始/结束时间", attri: :during},
-        {title: "状态", attri: :state},
-        {title: "来源", attri: :source},
-        {title: "类型", attri: :participation, params: @user}
+        :description,
+        [
+          {title: "来源", attri: :source},
+          {title: "状态", attri: :state},
+          {title: "类型", attri: :participation, params: @user}
+        ]
       ]
     end
 
