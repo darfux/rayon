@@ -6,11 +6,11 @@
 <div class="container">
   <% project_info={
     "项目名称" => @project.name,
-    "项目来源" => get_source(@project),
+    "项目来源" => @project.source,
     "项目时间" => @project.start.to_s+' to '+@project.end.to_s,
-    "项目类型" => get_type(@project),
-    "项目状态" => get_state(@project),
-    "参与方式" => get_participation(@project, @user)
+    "项目类型" => @project.source,
+    "项目状态" => @project.state,
+    "参与方式" => @project.participation(@user)
   }
     %>
   <div class="row">

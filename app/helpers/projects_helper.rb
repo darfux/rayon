@@ -22,24 +22,24 @@ module ProjectsHelper
  #                ).name
  #  end
 
- #  def get_participation_id(project, user)
- #    return nil if project.nil? || user.nil?
- #    projectUser = ProjectUser.where(user_id: user.id, project_id: project.id
- #            ).first
- #    return nil if projectUser.nil?
- #    projectUser.participation_type_id
- #  end
+  def get_participation_id(project, user)
+    return nil if project.nil? || user.nil?
+    projectUser = ProjectUser.where(user_id: user.id, project_id: project.id
+            ).first
+    return nil if projectUser.nil?
+    projectUser.participation_type_id
+  end
 
  #  def get_year_options
  #  	base_year = 1990
  #  	options = Array.new(50) { |index| year = base_year+index; [year, year] }
 	# end
 
- #  def get_source_select
- #    selects = []
- #    Source.all.each {|source| selects<<[source.name, source.id.to_i]}
- #    selects
- #  end
+  def get_source_select
+    selects = []
+    Source.all.each {|source| selects<<[source.name, source.id.to_i]}
+    selects
+  end
 
   def gen_li(dt, dd)
     li = 
