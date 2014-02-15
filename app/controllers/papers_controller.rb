@@ -97,10 +97,7 @@ class PapersController < ApplicationController
 
   def manage_tag
     @@manage_page = paper_manage_tag_path
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    render "shared/manage_tag"
   end
 
   private
@@ -116,6 +113,10 @@ class PapersController < ApplicationController
         {title: "发表于", attri: :publish, 
           callback: {handler: :get_brief_text}
         }
+      ]
+      @obj_tag_metas = [
+        :publish,
+        []  #empty array pot for capability
       ]
     end
 

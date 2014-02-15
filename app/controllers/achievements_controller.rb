@@ -93,10 +93,7 @@ class AchievementsController < ApplicationController
 
   def manage_tag
     @@manage_page = achievement_manage_tag_path
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    render "shared/manage_tag"
   end
 
   private
@@ -116,6 +113,10 @@ class AchievementsController < ApplicationController
         {title: "简介", attri: :description, 
           callback: {handler: :get_brief_text, params: 10}
         }
+      ]
+      @obj_tag_metas = [
+        :description,
+        []
       ]
     end
 

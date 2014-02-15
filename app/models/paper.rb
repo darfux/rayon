@@ -10,5 +10,7 @@ class Paper < ActiveRecord::Base
             ).first.user_own_type_id
                 ).name
   end
-
+  def name
+    self.title
+  end
 end
