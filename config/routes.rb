@@ -6,7 +6,7 @@ RayonPre::Application.routes.draw do
   get "match" => "match#index"
   get "match/match"
 
-  get "search" => "search#index"
+  get "search" => "search#index_test"
   post "search/result" => "search#search"
 
   # get "manage/:object" => "manage#handle"

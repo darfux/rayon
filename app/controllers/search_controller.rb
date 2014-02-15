@@ -35,7 +35,9 @@ class SearchController < ApplicationController
       format.js
     end
   end
-
+  def index_test
+    render layout: false
+  end
   def achievement
   end
 

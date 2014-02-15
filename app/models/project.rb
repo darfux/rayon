@@ -6,9 +6,9 @@ class Project < ActiveRecord::Base
   validates_presence_of :name, :project_type_id, :project_state_id, :source_id
 
 
-  # searchable do
-  #   text :name, :as => :project_description
-  # end 
+  searchable do
+    text :name, :as => :project_description
+  end 
 
   cattr_reader :search_show_attrs
   @@search_show_attrs = [["名称", :name]]
