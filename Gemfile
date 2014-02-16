@@ -44,8 +44,8 @@ gem 'bcrypt-ruby', '~> 3.0.1'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'sunspot_rails'
+gem 'sunspot_rails', '~> 2.0.0'
 
-gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development
+gem 'sunspot_solr', '~> 2.0.0'# optional pre-packaged Solr distribution for use in development
 
 gem "therubyracer", :platform => 'ruby' #linux ExecJS support
