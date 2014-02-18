@@ -17,3 +17,6 @@
 /tmp
 
 Gemfile.lock
+
+# Ignore solr temp file
+/solr/pids
