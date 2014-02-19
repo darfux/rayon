@@ -48,8 +48,8 @@ class SearchController < ApplicationController
   end
 
   def search
-    search = Project.search { fulltext '粗糙超长方体分类方法研究' }
-    raise search.results.to_s
+    search = Project.search { fulltext params[:content] }
+    @results = search.results
     # search = @@SEARCH_TYPE[params[:search_type].to_sym]
     # search_content = params[:search][:search_content]
     # @results = self.send(search[:method], search[:record], search[:attribute], search_content)
@@ -57,7 +57,7 @@ class SearchController < ApplicationController
 
     #   format.js
     # end
-    # render 'index'
+    render 'result'
   end
 
   private
