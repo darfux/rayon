@@ -18,6 +18,7 @@
 
 # Sunspot::Query.send :remove_const, :Dismax
 # Sunspot::Query::Dismax = PatchedDismax
+require 'Searcher'
 
 class SearchController < ApplicationController
   # before_action :inital_search_type, only: [:index, :search]
@@ -48,7 +49,8 @@ class SearchController < ApplicationController
   end
 
   def search
-    search = Project.search { fulltext params[:content] }
+    # search = Project.search { fulltext params[:content] }
+    search = Searcher.search(params)
     @results = search.results
     # search = @@SEARCH_TYPE[params[:search_type].to_sym]
     # search_content = params[:search][:search_content]
