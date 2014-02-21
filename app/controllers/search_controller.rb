@@ -31,6 +31,7 @@ class SearchController < ApplicationController
   end
 
   def index
+    @results = []
     respond_to do |format| 
       format.html
       format.js
@@ -50,8 +51,7 @@ class SearchController < ApplicationController
 
   def search
     # search = Project.search { fulltext params[:content] }
-    search = Searcher.search(params)
-    @results = search.results
+    @results = Searcher.search(params)
     # search = @@SEARCH_TYPE[params[:search_type].to_sym]
     # search_content = params[:search][:search_content]
     # @results = self.send(search[:method], search[:record], search[:attribute], search_content)
@@ -59,7 +59,7 @@ class SearchController < ApplicationController
 
     #   format.js
     # end
-    render 'result'
+    render 'index'
   end
 
   private
