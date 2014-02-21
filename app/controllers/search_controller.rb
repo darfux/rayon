@@ -18,7 +18,7 @@
 
 # Sunspot::Query.send :remove_const, :Dismax
 # Sunspot::Query::Dismax = PatchedDismax
-require 'Searcher'
+require_dependency 'Searcher'
 
 class SearchController < ApplicationController
   # before_action :inital_search_type, only: [:index, :search]
