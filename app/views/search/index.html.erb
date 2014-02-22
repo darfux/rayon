@@ -23,11 +23,11 @@
       <div class="col-md-12">
       <h4>
         <!-- badge should not be empty -->
-        <span class="label label-primary"><a href="#">全部 <span class="badge">42</span></a></span>
-        <span class="label label-warning"><a href="#">专家 <span class="badge">42</span></a></span>
-        <span class="label label-info"><a href="#">项目 <span class="badge">0</span></a></span>
-        <span class="label label-success"><a href="#">文献 <span class="badge">0</span></a></span>
-        <span class="label label-danger"><a href="#">成果 <span class="badge">12</span></a></span>
+        <span class="label label-primary"><a href="#">全部 <span class="badge"><%= @results.num[:total] %></span></a></span>
+        <span class="label label-warning"><a href="#">专家 <span class="badge"><%= @results.num[:expert] %></span></a></span>
+        <span class="label label-info"><a href="#">项目 <span class="badge"><%= @results.num[:project] %></span></a></span>
+        <span class="label label-success"><a href="#">文献 <span class="badge"><%= @results.num[:paper] %></span></a></span>
+        <span class="label label-danger"><a href="#">成果 <span class="badge"><%= @results.num[:achievement] %></span></a></span>
       </h4>
       </div>
     </div>
@@ -39,7 +39,7 @@
       
       <% @results.each do |result| %>
             <div class="col-md-3 col-lg-2  col-sm-4   result-frame">
-              <a href=""><div class="result  <%= css_name result%>" >
+              <a href="" ondblclick="javascript:alert('dbclktest')"><div class="result  <%= css_name result%>" >
                 <p><%= result.name %></p>
               </div></a>
             </div>
