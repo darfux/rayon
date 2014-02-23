@@ -8,7 +8,7 @@ RayonPre::Application.routes.draw do
 
   get "search" => "search#index"
   get "search_test" => "search#index_test"
-  get "search/result" => "search#search"
+  get "search/result" => "search#search", as: "search_result"
   post "search/result" => "search#search"
 
   # get "manage/:object" => "manage#handle"

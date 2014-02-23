@@ -15,36 +15,48 @@
           <%= submit_tag '搜索', :class => "btn btn-default" %>
         </div>
       </div>
-    <% end -%>
+    <% end %>
 
   </div>
+
+  <% if @results %>
   <div class="row">
     <div class="col-md-12">
       <div class="col-md-12">
       <h4>
         <!-- badge should not be empty -->
-        <span class="label label-primary"><a href="#">全部 <span class="badge"><%= @results.num[:total] %></span></a></span>
-        <span class="label label-warning"><a href="#">专家 <span class="badge"><%= @results.num[:expert] %></span></a></span>
+        </span>
+        <!-- don't insert line feed as it will effect the CSS's margin -->
+        <span class="label label-primary"><%= link_to url_for({action: :search, type: :total}) do %>全部 <span class="badge"><%= @results.num[:total] %></span><% end %></span>
+        <span class="label label-warning"><%= link_to '#' do %>专家 <span class="badge"><%= @results.num[:expert] %></span><% end %></span>
         <span class="label label-info"><a href="#">项目 <span class="badge"><%= @results.num[:project] %></span></a></span>
         <span class="label label-success"><a href="#">文献 <span class="badge"><%= @results.num[:paper] %></span></a></span>
         <span class="label label-danger"><a href="#">成果 <span class="badge"><%= @results.num[:achievement] %></span></a></span>
+
       </h4>
       </div>
     </div>
   </div>
+  <% end %>
+
 </div>
+
+<% if @results %>
 <div class="container" id="search-result">
   <div class="row" id="search-result">
     <div class="col-md-12">
       
       <% @results.each do |result| %>
-            <div class="col-md-3 col-lg-2  col-sm-4   result-frame">
-              <a href="" ondblclick="javascript:alert('dbclktest')"><div class="result  <%= css_name result%>" >
-                <p><%= result.name %></p>
-              </div></a>
-            </div>
-        <% end %>
+        <div class="col-md-3 col-lg-2  col-sm-4   result-frame">
+          <a href="" ondblclick="javascript:alert('dbclktest')"><div class="result  <%= css_name result%>" >
+            <p><%= result.name %></p>
+          </div></a>
+        </div>
+      <% end %>
+
     </div>
   </div>
 </div>
 <% end %>
+
+<% end #content_for%>

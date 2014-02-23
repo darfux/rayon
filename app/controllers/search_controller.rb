@@ -31,7 +31,6 @@ class SearchController < ApplicationController
   end
 
   def index
-    @results = []
     respond_to do |format| 
       format.html
       format.js
