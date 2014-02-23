@@ -1,13 +1,24 @@
 class SearchResult
   attr_reader :results, :num
-  def initialize(user, project, achiev, paper)
-    @results = (user+project+achiev+paper).flatten
+  def initialize(type, user, project, achiev, paper)
+    case type.to_sym
+    when :expert
+      @results = user
+    when :project
+      @results = project
+    when :achievement
+      @results = achiev
+    when :paper
+      @results = paper
+    else
+      @results = (user+project+achiev+paper).flatten
+    end
     @num = {
       expert: user.size,
       project: project.size,
       achievement: achiev.size,
       paper: paper.size,
-      total: @results.size
+      total: (user+project+achiev+paper).size
     }
   end
   def each
@@ -22,6 +33,7 @@ class Searcher
     project= Project.search { fulltext params[:content] }
     achievement = Achievement.search{ fulltext params[:content]}
     paper = Paper.search{ fulltext params[:content]}
-    SearchResult.new(user.results, project.results, achievement.results, paper.results) 
+
+    SearchResult.new(params[:type], user.results, project.results, achievement.results, paper.results) 
   end
 end

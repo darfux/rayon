@@ -9,10 +9,11 @@
     <%= form_tag({action: :search}, {method: :get}) do %>
       <div class="col-md-12 col-sm-12">
         <div class="col-md-10 col-sm-9">
-          <%= text_field_tag :content, nil, :class => :"form-control", :placeholder => "请输入检索内容" %>
+          <%= text_field_tag :content, @content, :class => :"form-control", :placeholder => "请输入检索内容" %>
         </div>
         <div class="col-md-2 col-sm-2">
-          <%= submit_tag '搜索', :class => "btn btn-default" %>
+          <%= hidden_field_tag :type, :total %>
+          <%= submit_tag '搜索', :class => "btn btn-default", name: nil%>
         </div>
       </div>
     <% end %>
@@ -27,11 +28,15 @@
         <!-- badge should not be empty -->
         </span>
         <!-- don't insert line feed as it will effect the CSS's margin -->
-        <span class="label label-primary"><%= link_to url_for({action: :search, type: :total}) do %>全部 <span class="badge"><%= @results.num[:total] %></span><% end %></span>
-        <span class="label label-warning"><%= link_to '#' do %>专家 <span class="badge"><%= @results.num[:expert] %></span><% end %></span>
-        <span class="label label-info"><a href="#">项目 <span class="badge"><%= @results.num[:project] %></span></a></span>
-        <span class="label label-success"><a href="#">文献 <span class="badge"><%= @results.num[:paper] %></span></a></span>
-        <span class="label label-danger"><a href="#">成果 <span class="badge"><%= @results.num[:achievement] %></span></a></span>
+        <span class="label label-primary"><%= link_to url_for({action: :search, content: @content, type: :total}) do %>全部 <span class="badge"><%= @results.num[:total] %></span><% end %></span>
+
+        <span class="label label-warning"><%= link_to url_for({action: :search, content: @content, type: :expert}) do %>专家 <span class="badge"><%= @results.num[:expert] %></span><% end %></span>
+
+        <span class="label label-info"><%= link_to url_for({action: :search, content: @content, type: :project}) do %>项目 <span class="badge"><%= @results.num[:project] %></span><% end %></span>
+
+        <span class="label label-success"><%= link_to url_for({action: :search, content: @content, type: :paper}) do %>文献 <span class="badge"><%= @results.num[:paper] %></span><% end %></span>
+
+        <span class="label label-danger"><%= link_to url_for({action: :search, content: @content, type: :achievement}) do %>成果 <span class="badge"><%= @results.num[:achievement] %></span><% end %></span>
 
       </h4>
       </div>
@@ -42,13 +47,15 @@
 </div>
 
 <% if @results %>
-<div class="container" id="search-result">
+
+<!-- using onselectstart="return false" to avoid blue select -->
+<div class="container" id="search-result" onselectstart="return false">
   <div class="row" id="search-result">
     <div class="col-md-12">
       
       <% @results.each do |result| %>
         <div class="col-md-3 col-lg-2  col-sm-4   result-frame">
-          <a href="" ondblclick="javascript:alert('dbclktest')"><div class="result  <%= css_name result%>" >
+          <a  ondblclick="javascript:alert('dbclktest')"><div class="result  <%= css_name result%>" >
             <p><%= result.name %></p>
           </div></a>
         </div>
