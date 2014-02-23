@@ -50,8 +50,10 @@ class SearchController < ApplicationController
 
   def search
     # search = Project.search { fulltext params[:content] }
-    @results = Searcher.search(params)
-    @content = params[:content]
+    unless params[:content].empty?
+      @results = Searcher.search(params)
+      @content = params[:content]
+    end
     # search = @@SEARCH_TYPE[params[:search_type].to_sym]
     # search_content = params[:search][:search_content]
     # @results = self.send(search[:method], search[:record], search[:attribute], search_content)
