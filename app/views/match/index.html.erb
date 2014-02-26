@@ -1,5 +1,12 @@
 <%= content_for :head do %>
 <%= stylesheet_link_tag "match", media: "all" %>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#match").click(function(){
+   	jQuery.getJSON('http://127.0.0.1:3000/match/get');
+  });
+});
+</script>
 <% end %>
 <% content_for :main_content do %>
 <div>
@@ -11,9 +18,8 @@
 		<h2 class="text-muted">现在</h2>
 		<h3>点击下方的匹配按钮</h3>
 		<h1>获得最适合您的科研信息！</h1>
-		<%= link_to get_match_path  do %>
-			<h1>匹配</h1>
-		<% end %>
+			<h1 id='match'>匹配</h1>
+			<%= link_to 'match', get_match_path  %>
 	</center>
 </div>
 <% end %>
