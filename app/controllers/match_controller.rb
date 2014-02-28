@@ -14,6 +14,12 @@ class MatchController < ApplicationController
     end
   end
 
+  def status
+    respond_to do |format| 
+      format.json #render json: User.all.first }
+    end
+  end
+
 private
   # def branch
   #   p 1
