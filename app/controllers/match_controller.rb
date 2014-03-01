@@ -16,7 +16,9 @@ class MatchController < ApplicationController
 
   def status
     respond_to do |format| 
-      format.json #render json: User.all.first }
+      format.json { 
+        render json: '{"firstName":"John"}' 
+      }
     end
   end
 
