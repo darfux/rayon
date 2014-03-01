@@ -2,31 +2,32 @@
 <%= stylesheet_link_tag "match", media: "all" %>
 <!-- <script type="text/javascript">)</script> -->
 <script>
+var t;
 function test_click(){
-  $('#test').click(
-    function(){
-      $.getJSON('http://127.0.0.1:3000/match/status', function(data){
-        console.log(data);
-        if(data.status == 'CHANGE')
-        {
-          for(i in data.loaded)
-          { 
-            var loaded = $('.loding-info-container').children()[i];
-            $(loaded).css('display','block'); //not inline
-            $(loaded).addClass('loaded');
-            $(loaded).removeClass('loading');
-            content = $(loaded).html();
-            $(loaded).html('已匹配'+content+'库...');
-            console.log();
-          }
-          var loading = $('.loding-info-container').children()[data.loading];
-          content = $(loading).html();
-          $(loading).html('正在检索'+content+'库...');
-          $(loading).css('display','block');
-        }
-      });
-      // $('.loading').addClass('loaded');
-      // $('.loading').removeClass('loading');
+  t=setTimeout("test_click()",1000);
+  $.getJSON('http://127.0.0.1:3000/match/status', function(data){
+    console.log(data);
+    if(data.status == 'CHANGE' || data.status == 'FINISH')
+    {
+      for(i in data.loaded)
+      { 
+        var loaded = $('.loding-info-container').children()[i];
+        $(loaded).css('display','block'); //not inline
+        $(loaded).addClass('loaded');
+        $(loaded).removeClass('loading');
+        content = $(loaded).attr('name');
+        $(loaded).html('已匹配'+content+'库...');
+        console.log();
+      }
+      var loading = $('.loding-info-container').children()[data.loading];
+      content = $(loading).attr('name');
+      $(loading).html('正在检索'+content+'库...');
+      $(loading).css('display','block');
+    }
+    var rate = data.rate;
+    $('.progress-bar').attr('aria-valuenow', rate);
+    $('.progress-bar').css("width", rate+'%');
+    if(data.status == 'FINISH') clearTimeout(t);
   });
 }
 $(document).ready(function(){
@@ -45,15 +46,14 @@ $(document).ready(function(){
   </div>
   <div class="progress progress-striped active">
     <div class="progress-bar"  role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-      <span class="sr-only">0% Complete</span>
+      <!-- line feed here is necessary -->
     </div>
   </div>
-    <button id='test'>Test</button>
   <div class="loding-info-container">
-    <div class="loading-info achievement loading">成果</div>
-    <div class="loading-info expert loading">专家</div>   
-    <div class="loading-info paper loading">文献</div>   
-    <div class="loading-info project loading">项目</div>
+    <div class="loading-info achievement loading" name="成果"></div>
+    <div class="loading-info expert loading" name="专家"></div>   
+    <div class="loading-info paper loading" name="文献"></div>   
+    <div class="loading-info project loading" name="项目"></div>
   </div>
 
 </div>

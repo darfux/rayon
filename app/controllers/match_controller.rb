@@ -1,6 +1,7 @@
 class MatchController < ApplicationController
   CHANGE = :CHANGE
   NO_CHANGE = :NOCHANGE
+  FINISH = :FINISH
   def index
   	respond_to do |format| 
   		format.html
@@ -9,6 +10,7 @@ class MatchController < ApplicationController
   end
 
   def match
+    session[:step] = nil
     respond_to do |format| 
       format.html
       format.js
@@ -26,20 +28,30 @@ class MatchController < ApplicationController
 
 private
   def match_client
-    # return {status: NO_CHANGE}
-    case session[:step]
-    when nil,-1
+    if session[:step]==-1|| session[:step]==nil
       session[:step] = 0
+    else
+      return {status: NO_CHANGE} if rand(10)>4
+    end
+    case session[:step]
     when 0
       session[:step] = 1
+      return {status: CHANGE, loaded: [], loading: [0], rate: 0}
     when 1
       session[:step] = 2
+      return {status: CHANGE, loaded: [0], loading: [1], rate: 25}
     when 2
+      session[:step] = 3
+      return {status: CHANGE, loaded: [0,1], loading: [2], rate: 50}
+    when 3
+      session[:step] = 4
+      return {status: CHANGE, loaded: [0,1,2], loading: [3], rate: 75}
+    when 4
       session[:step] = -1
+      return {status: FINISH, loaded: [0,1,2,3], loading: [], rate: 100}
     else
-      session[:step] = nil
+      raise 'Wrong status'
     end
-    return {status: CHANGE, loaded: [0,1,2], loading: [3], rate: 75}
   end
   # def branch
   #   p 1
