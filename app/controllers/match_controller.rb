@@ -1,4 +1,6 @@
 class MatchController < ApplicationController
+  CHANGE = :CHANGE
+  NO_CHANGE = :NOCHANGE
   def index
   	respond_to do |format| 
   		format.html
@@ -17,13 +19,14 @@ class MatchController < ApplicationController
   def status
     respond_to do |format| 
       format.json { 
-        render json: {status: match_fsm}.to_json
+        render json: match_client.to_json
       }
     end
   end
 
 private
-  def match_fsm
+  def match_client
+    # return {status: NO_CHANGE}
     case session[:step]
     when nil,-1
       session[:step] = 0
@@ -36,6 +39,7 @@ private
     else
       session[:step] = nil
     end
+    return {status: CHANGE, loaded: [0,1,2], loading: [3], rate: 75}
   end
   # def branch
   #   p 1
