@@ -113,6 +113,9 @@
 	text-align: center;
 }
 
+.loding-info-container{
+	display: none;
+}
 .loading-info{ 
 	/*float: right;*/
 	/*margin-right: 50%;*/
@@ -140,6 +143,9 @@
 }
 .loading-info.achievement{
 	background-color: rgba(217,83,79,0.6);
+}
+.loading-info.project{
+	background-color: rgba(91,192,222,0.6);
 }
 
 /*match result*/

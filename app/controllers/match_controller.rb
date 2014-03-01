@@ -17,12 +17,26 @@ class MatchController < ApplicationController
   def status
     respond_to do |format| 
       format.json { 
-        render json: '{"firstName":"John"}' 
+        render json: {status: match_fsm}.to_json
       }
     end
   end
 
 private
+  def match_fsm
+    case session[:step]
+    when nil,-1
+      session[:step] = 0
+    when 0
+      session[:step] = 1
+    when 1
+      session[:step] = 2
+    when 2
+      session[:step] = -1
+    else
+      session[:step] = nil
+    end
+  end
   # def branch
   #   p 1
   #   Thread.new { dosome } 

@@ -6,13 +6,16 @@ function test_click(){
   $('#test').click(
     function(){
       var resp = jQuery.getJSON('http://127.0.0.1:3000/match/status', function(){
-        console.log(resp.responseJSON.firstName);
+        console.log(resp.responseJSON.status);
       });
-      
+      $('.loading').addClass('loaded');
+      $('.loading').removeClass('loading');
   });
 }
 $(document).ready(function(){
   test_click();
+  $('.loding-info-container').children().slice(1).css('display','none');
+  $('.loding-info-container').css('display','inline');
 });
 
 </script>
@@ -28,14 +31,20 @@ $(document).ready(function(){
       <span class="sr-only">0% Complete</span>
     </div>
   </div>
+    <button id='test'>Test</button>
   <div class="loding-info-container">
     <div class="loading-info achievement loading">
-      正在检索成果库
+      正在检索成果库...
     </div>
-    <button id='test'>Test</button>
-<!--    <div class="loading-info expert loading">
+    <div class="loading-info expert loading">
       正在检索专家库...
-    </div> -->
+    </div>   
+    <div class="loading-info paper loading">
+      正在检索文献库...
+    </div>   
+    <div class="loading-info project loading">
+      正在检索项目库...
+    </div>
   </div>
 
 </div>
