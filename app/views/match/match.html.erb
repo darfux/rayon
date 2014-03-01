@@ -5,7 +5,7 @@
 var t;
 function test_click(){
   t=setTimeout("test_click()",1000);
-  $.getJSON('http://127.0.0.1:3000/match/status', function(data){
+  $.getJSON('<%= j match_status_path %>', function(data){
     console.log(data);
     if(data.status == 'CHANGE' || data.status == 'FINISH')
     {
@@ -35,7 +35,6 @@ $(document).ready(function(){
   $('.loding-info-container').children().slice(1).css('display','none');
   $('.loding-info-container').css('display','inline');
 });
-
 </script>
 <% end %>
 <% content_for :main_content do %>
