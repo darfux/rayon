@@ -26,6 +26,10 @@ class MatchController < ApplicationController
     end
   end
 
+  def result
+    
+  end
+  
 private
   def match_client
     if session[:step]==-1|| session[:step]==nil

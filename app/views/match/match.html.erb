@@ -27,7 +27,11 @@ function test_click(){
     var rate = data.rate;
     $('.progress-bar').attr('aria-valuenow', rate);
     $('.progress-bar').css("width", rate+'%');
-    if(data.status == 'FINISH') clearTimeout(t);
+    if(data.status == 'FINISH')
+    {
+      clearTimeout(t);
+      window.location.href = '<%= j match_result_path %>';
+    }
   });
 }
 $(document).ready(function(){
