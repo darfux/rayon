@@ -9,12 +9,17 @@ Rack::Handler::Mongrel.run proc { |env|
     :Server => 'Ruby-Mongrel'
   }
 
-  postData =  env["rack.input"].string
+  postData =  env["rack.input"].string.strip
 
   bodies = ["Some body\n"]
 
-  ## TODO: validate postData.
-  post = (JSON.parse(postData)).to_s if postData.strip!=""
+  ## validate postData.
+  post = false
+  begin 
+    post = (JSON.parse(postData)).to_s if postData!=""
+  rescue
+    puts "invalid post json"
+  end
 
   if not post
     headers[:reason] = 'Post not found.'
