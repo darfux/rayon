@@ -18,6 +18,7 @@
 
 # Sunspot::Query.send :remove_const, :Dismax
 # Sunspot::Query::Dismax = PatchedDismax
+require_dependency 'Searcher'
 
 class SearchController < ApplicationController
   # before_action :inital_search_type, only: [:index, :search]
@@ -48,8 +49,11 @@ class SearchController < ApplicationController
   end
 
   def search
-    search = Project.search { fulltext params[:content] }
-    @results = search.results
+    # search = Project.search { fulltext params[:content] }
+    unless params[:content].empty?
+      @results = Searcher.search(params)
+      @content = params[:content]
+    end
     # search = @@SEARCH_TYPE[params[:search_type].to_sym]
     # search_content = params[:search][:search_content]
     # @results = self.send(search[:method], search[:record], search[:attribute], search_content)
@@ -57,7 +61,7 @@ class SearchController < ApplicationController
 
     #   format.js
     # end
-    render 'result'
+    render 'index'
   end
 
   private

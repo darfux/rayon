@@ -4,6 +4,10 @@ class Paper < ActiveRecord::Base
 
   validates_presence_of :title
 
+  searchable do
+    text :name, :as => :project_description
+  end 
+  
   def own_type(user)
     UserOwnType.find(
         PaperUser.where(user_id: user.id, paper_id: self.id

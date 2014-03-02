@@ -4,9 +4,13 @@ RayonPre::Application.routes.draw do
   root to: 'sessions#new'
 
   get "match" => "match#index"
-  get "match/match"
+  get "match/get" => "match#match", as: "get_match"
+  get "match/status" => "match#status", as: "match_status"
+  get "match/result" => "match#result", as: "match_result"
 
-  get "search" => "search#index_test"
+  get "search" => "search#index"
+  get "search_test" => "search#index_test"
+  get "search/result" => "search#search", as: "search_result"
   post "search/result" => "search#search"
 
   # get "manage/:object" => "manage#handle"
