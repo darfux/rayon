@@ -1,12 +1,5 @@
 <%= content_for :head do %>
 <%= stylesheet_link_tag "match", media: "all" %>
-<script type="text/javascript">
-$(document).ready(function(){
-  $("#match").click(function(){
-   	jQuery.getJSON('http://127.0.0.1:3000/match/get');
-  });
-});
-</script>
 <% end %>
 <% content_for :main_content do %>
 <div>
