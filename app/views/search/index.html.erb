@@ -55,9 +55,11 @@
       
       <% @results.each do |result| %>
         <div class="col-md-3 col-lg-2  col-sm-4   result-frame">
-          <a  ondblclick="javascript:alert('dbclktest')"><div class="result  <%= css_name result%>" >
+          <%= link_to result do %>
+          <div class="result  <%= css_name result%>" >
             <p><%= result.name %></p>
-          </div></a>
+          </div>
+          <% end %>
         </div>
       <% end %>
 
