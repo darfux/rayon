@@ -32,7 +32,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation, 'Title:' %><br>
+    <%= f.label :title, 'Title:' %><br>
     <%= f.select :title_id, Title.all.collect {|t| [t.name, t.id]} %>
   </div>
 
