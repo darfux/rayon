@@ -23,4 +23,8 @@ module ApplicationHelper
       text[0..num] << '...'
     end
   end
+
+  def mobile_req?
+    return @browser_type==:mobile
+  end
 end

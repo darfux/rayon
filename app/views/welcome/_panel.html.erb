@@ -2,7 +2,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="col-md-4 col-sm-6 panel-block">
-					<%= link_to(project_manage_list_path)  do %>
+					<%= link_to(mobile_req? ? project_manage_tag_path : project_manage_list_path)  do %>
 						<div class="panel-elm" id="panel-elm0">
 							<p class="panel-text">项目管理</p>
 							<span type="button" class="glyphicon glyphicon-briefcase"/>
@@ -10,7 +10,7 @@
 					<% end %>
 				</div>
 				<div class="col-md-4 col-sm-6 panel-block">
-					<%= link_to(achievement_manage_list_path)  do %>
+					<%= link_to(mobile_req? ? achievement_manage_tag_path : achievement_manage_list_path)  do %>
 						<div class="panel-elm" id="panel-elm1">
 							<p class="panel-text">成果管理</p>
 							<span type="button" class="glyphicon glyphicon-send"/>
@@ -18,7 +18,7 @@
 					<% end %>
 				</div>
 				<div class="col-md-4 col-sm-6 panel-block">
-					<%= link_to(paper_manage_list_path)  do %>
+					<%= link_to(mobile_req? ? paper_manage_tag_path : paper_manage_list_path)  do %>
 						<div class="panel-elm" id="panel-elm2">
 							<p class="panel-text">论文管理</p>
 							<span type="button" class="glyphicon glyphicon-book"/>
