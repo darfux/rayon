@@ -32,6 +32,11 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :development, :test do
+  gem 'railroady'
+end
+
+
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.1'
 
@@ -49,3 +54,5 @@ gem 'sunspot_rails', '~> 2.0.0'
 gem 'sunspot_solr', '~> 2.0.0'# optional pre-packaged Solr distribution for use in development
 
 gem "therubyracer", :platform => 'ruby' #linux ExecJS support
+
+gem 'awesome_print'

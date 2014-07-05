@@ -1,7 +1,7 @@
 require 'nokogiri'
 require 'net/http'
 require 'yaml'
-require 'Pathname'
+require 'pathname'
 
 begin
 
