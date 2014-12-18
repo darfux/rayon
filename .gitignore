@@ -25,3 +25,4 @@ Gemfile.lock
 
 /tools/spiders/*.log
 /tools/spiders/*.yml
+*.bak
