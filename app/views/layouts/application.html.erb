@@ -1,50 +1,14 @@
 <!DOCTYPE html>
 <html>
-<meta http-equiv="content-type" content="text/html;charset=utf-8">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <%= javascript_include_tag "application" %>
-    <%= stylesheet_link_tag    "application", media: "all" %>
-    <%= stylesheet_link_tag    "common", media: "all" %>
-    <%= yield :head %> 
-    <%= csrf_meta_tags %>
+  <title>Rayon</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
 </head>
-<title>对口支援联合科研平台</title>
 <body>
-<div class="container">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="page-header" id="header">
-				<%= yield :pre_header %>
-				<h2>对口支援联合科研平台<small><%= yield :header_small_title%></small></h2>
-			</div>
-			<div id="bottom-nav">
-				<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
-				  <div class="navbar-header">
-				    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-				      <span class="sr-only">Toggle navigation</span>
-				      <span class="icon-bar"></span>
-				      <span class="icon-bar"></span>
-				      <span class="icon-bar"></span>
-				    </button>
-				  </div>
-				  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				    <ul class="nav navbar-nav"  id="bot-nav-left">
-				      <li class="active"><%= link_to '主页', welcome_path%></li>
-				      <%= yield :bottom_nav %>
-				    </ul>
-				    <ul class="nav navbar-nav navbar-right">
-				    	<li><%= link_to '注销', logout_path, :method => :delete%></li>
-				    	<li><a href="#">关于</a></li>
-				  </div>
-				</nav>
-			</div>
-		</div>
-	</div>
-</div>
-<div id="main-content">	
-	<%= yield :main_content%>
-</div>
+
+<%= yield %>
+
 </body>
 </html>
