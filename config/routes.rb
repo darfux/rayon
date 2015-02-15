@@ -1,4 +1,45 @@
 Rails.application.routes.draw do
+  get "research_directions/create"
+  get "research_directions/destroy"
+  root to: 'sessions#new'
+
+  get "match" => "match#index"
+  get "match/get" => "match#match", as: "get_match"
+  get "match/status" => "match#status", as: "match_status"
+  get "match/result" => "match#result", as: "match_result"
+
+  get "search" => "search#index"
+  get "search_test" => "search#index_test"
+  get "search/result" => "search#search", as: "search_result"
+  post "search/result" => "search#search"
+
+  # get "manage/:object" => "manage#handle"
+  # get "manage" => "manage#index", as: "manage"
+
+  get "projects/manage_list" => "projects#manage_list", as: "project_manage_list"#should before the 'resource :project'  
+  get "projects/manage_tag" => "projects#manage_tag", as: "project_manage_tag"#should before the 'resource :project'
+  
+  get "achievements/manage_list" => "achievements#manage_list", as: "achievement_manage_list"#should before the 'resource :achievement'  
+  get "achievements/manage_tag" => "achievements#manage_tag", as: "achievement_manage_tag"#should before the 'resource :achievement'
+   
+  get "paper/manage_list" => "papers#manage_list", as: "paper_manage_list"#should before the 'resource :paper'  
+  get "paper/manage_tag" => "papers#manage_tag", as: "paper_manage_tag"#should before the 'resource :paper'
+  
+  resources :projects
+  resources :achievements
+  resources :papers
+  resources :users
+  resources :research_directions
+
+  post "research_directions" => "research_directions#create", as: "create_research_direction"
+  
+  get "welcome" => "welcome#index", as: "welcome"
+  
+  controller :sessions do
+    get  'login' => :new
+    post 'login' => :create
+    delete 'logout' => :destroy
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

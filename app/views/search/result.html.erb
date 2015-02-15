@@ -1,0 +1,9 @@
+<% content_for :main_content do %>
+  <% @results.each do |result| %>
+  <p>
+    <% atrs = result.attributes %>
+    <% atrs.delete('description') %>
+    <%= atrs %>
+  </p>
+  <% end %>
+<% end %>

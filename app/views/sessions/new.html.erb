@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="content-type" content="text/html;charset=utf-8">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <%= javascript_include_tag "application" %>
+    <%= stylesheet_link_tag    "application", media: "all" %>
+    <%= stylesheet_link_tag    "login", media: "all" %>
+    <%= csrf_meta_tags %>
+</head>
+<title>对口支援联合科研平台</title>
+<body>
+<title>Login</title>
+		<div id="login">
+			<div class="container title">
+				<h1>对口支援联合特色科研平台</h1>
+			</div>
+			<div  class="form-signin" >
+				<h2 class="form-signin-heading zh-cha" id="log_title">请登录</h2>
+				<%= form_tag '/login' do %>
+					<% unless flash[:uidwr] %>
+						<%= text_field_tag :uid, params[:uid], class: "form-control", placeholder: "Uid", required: true, autofocus: true%>
+					<% else %>
+						<div class="form-group has-error">
+						  <%= text_field_tag :uid, params[:uid], class: "form-control", placeholder: "Uid", required: true, autofocus: true%><label class="control-label error-notice" for="uid"><%= flash[:uidwr] %></label>
+						</div>
+					<% end %>					
+					<% unless flash[:pswwr] %>
+						<%= password_field_tag :password, params[:password], class: "form-control", placeholder: "密码", required: true%>
+					<% else %>
+						<div class="form-group has-error">
+							<%= password_field_tag :password, params[:password], class: "form-control", placeholder: "密码", required: true%><label class="control-label error-notice" for="uid"><%= flash[:pswwr] %></label>
+						</div>
+					<% end %>
+
+					<%= submit_tag "登录", id: "button",  class: "btn btn-lg btn-primary zh-cha"%>
+				<% end %>
+			</div>
+		</div>
+	</body>
+</html>

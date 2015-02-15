@@ -1,0 +1,30 @@
+<thead>
+<tr>
+    <th>Id</th>
+    <th>项目名称</th>
+    <th>简介</th>
+    <th>开始/结束时间</th>
+    <th>状态</th>
+    <th>来源</th>
+    <th>类型</th>
+    <th>管理</th>
+</tr>
+</thead>
+<tbody>
+<% @projects.each do |project|%>
+<tr>
+    <td><%= project.id %></td>
+    <td><%= project.name %></td>
+    <td><%= get_brief_text(project.description) %></td>
+    <td><%= project.start.to_s+'/'+project.end.to_s %></td>
+    <td><%= get_state(project) %></td>
+    <td><%= get_source(project) %></td>
+    <td><%= get_participationn(project, @user) %></td>
+    <td>
+        <%= link_to '显示', project %>
+        <%= link_to '编辑', edit_project_path(project.id) %>
+        <%= link_to '删除', project, method: :delete, data: { confirm: 'Are you sure to delete this project?' } %>
+    </td>
+</tr>
+<% end %>
+</tbody>

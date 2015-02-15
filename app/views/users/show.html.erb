@@ -1,0 +1,104 @@
+<% content_for :head do %>
+<%= stylesheet_link_tag "user_show", media: "all" %>
+<% end %>
+
+<% content_for :header_small_title do %>
+个人信息
+<% end %>
+
+<% content_for :main_content do %>
+<div class="container">
+	<!-- user brief -->
+	<div class="row">
+		<div class="col-md-3">
+			<img src="" class="img-responsive img-thumbnail" alt="Responsive image">
+		</div>
+		<div class="col-md-9">
+			<div class="row">
+				<h3>用户id: <%= @user.uid %></h3>
+				<h3>姓名: 张金</h3>
+				<h3>职称: <%= @user.title.name %></h3>
+			</div>
+			<!-- research direction -->
+			<div class="row">
+				<div>
+					<div>
+						<h3 class="research-direction-title">我的研究方向</h3>
+					</div>
+					<% @user.research_directions.each do |rd| %>
+						<div class="research-direction-tag"><%= rd.name %>
+							<%= link_to rd,  method: :delete, class: "tag-remove" do %>
+								<span class="glyphicon glyphicon-remove"/>
+							<% end %>
+						</div>
+					<% end %>
+					<div type="button" id="research-direction-tag-add" data-toggle="modal" data-target="#myModal">+</div>
+				</div>
+			</div>
+			<!-- research direction end -->
+		</div>
+	</div>
+	<!-- user brief end -->
+	<hr/>
+	<div class="row">
+		<h3>个人简介:</h3>
+		<pre>
+博 士 南开大学 计算机应用技术 2008年 
+  
+硕 士 华中科技大学 电路与系统 2005年 
+  
+学 士 华中科技大学 通信工程 2002年
+
+2011年度天津市科学技术进步二等奖 
+
+研究团队简介： 
+ 李庆诚 教授，博士生导师，实验室学术带头人 
+ 马捷 教授，现任职软件学院 
+ 从跃进 副教授 
+ 张金 副教授 
+ 宫晓利 讲师
+ 
+ 社会兼职：	  
+ 新闻出版总署数字版权保护标准起草专家 
+ 工信部电子图书内容标准讨论专家组 
+ 天津市大学软件学院专业建设指导委员会委员 
+ 中国计算机学会中文信息技术专委会专委 
+ 中国人工智能学会智能数字内容安全专业委员会专委 
+ 滨海新区科技特派员 
+ ACM/IEEE/CCF Member
+		</pre>
+	</div>
+</div>
+
+<!-- Modal -->
+<script>
+$(document).ready(function(){
+	$("#myModal").on('shown.bs.modal', function(e) {
+	  $(this).find("[autofocus]:first").focus();
+	});
+})
+</script>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">添加我的研究方向</h4>
+      </div>
+    	<%= form_tag create_research_direction_path do %>
+      <div class="modal-body">
+      		<%= text_field_tag :name, nil, class: :"form-control", placeholder: "例如：云计算", required: true, autofocus: true%>
+        	<!-- <input type="text" class="form-control" id="name" placeholder="example: Cloud Computing"/> -->
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+        <%= submit_tag "添加", class: :"btn btn-primary", data: { disable_with: "Please wait..." } %>
+      </div>
+    	<% end %>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- modal end -->
+<% end %>
+
