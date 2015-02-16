@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  skip_before_filter :authorize, only: [:new, :create]
 
   # GET /users
   # GET /users.json
@@ -34,6 +35,7 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
+    @user.uid = User.last.id + 23333
     respond_to do |format|
       if @user.save
         session[:user_id] = @user.id
@@ -52,7 +54,7 @@ class UsersController < ApplicationController
     @saved = @user.update(user_params)
     respond_to do |format|
       if @saved
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to @user }
         format.js
         format.json { head :no_content }
       else
@@ -81,6 +83,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:uid, :name, :password, :password_confirmation, :title_id, :email)
+      params.require(:user).permit(:name, :password, :password_confirmation, :title_id, :email)
     end
 end

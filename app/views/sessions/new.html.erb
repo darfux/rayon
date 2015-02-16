@@ -17,7 +17,12 @@
 				<h1>对口支援联合特色科研平台</h1>
 			</div>
 			<div  class="form-signin" >
-				<h2 class="form-signin-heading zh-cha" id="log_title">请登录</h2>
+				<h2 class="form-signin-heading zh-cha" id="log_title">
+					请登录 
+				  <%= link_to new_user_path() do %>
+						<small>注册</small>
+					<% end %>
+				</h2>
 				<%= form_tag '/login' do %>
 					<% unless flash[:uidwr] %>
 						<%= text_field_tag :uid, params[:uid], class: "form-control", placeholder: "Uid", required: true, autofocus: true%>

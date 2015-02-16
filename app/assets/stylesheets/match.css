@@ -301,3 +301,11 @@
 	border-bottom: 2px dashed gray;
 	border-bottom-right-radius: 5px;
 }
+
+#match-btn{
+	font-size: 32px;
+	margin-top: 16px;
+	background-color: #66CCFF;
+	padding: 20px 40px;
+	border-radius: 60px;
+}

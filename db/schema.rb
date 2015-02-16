@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131210141316) do
+ActiveRecord::Schema.define(version: 20150216122016) do
 
   create_table "achievements", force: true do |t|
     t.string   "title"
@@ -114,6 +114,7 @@ ActiveRecord::Schema.define(version: 20131210141316) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "title_id"
+    t.text     "introduction"
   end
 
 end

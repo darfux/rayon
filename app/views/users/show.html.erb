@@ -3,7 +3,10 @@
 <% end %>
 
 <% content_for :header_small_title do %>
-个人信息
+个人信息 
+  <%= link_to edit_user_path(@user) do %>
+      <span id="edit-info" class="glyphicon glyphicon-pencil"/>
+  <% end %>
 <% end %>
 
 <% content_for :main_content do %>
@@ -16,7 +19,7 @@
 		<div class="col-md-9">
 			<div class="row">
 				<h3>用户id: <%= @user.uid %></h3>
-				<h3>姓名: 张金</h3>
+				<h3>姓名: <%= @user.name %></h3>
 				<h3>职称: <%= @user.title.name %></h3>
 			</div>
 			<!-- research direction -->
