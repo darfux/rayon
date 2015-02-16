@@ -59,17 +59,17 @@
     <!-- *** This fieldType is used by Sunspot! *** -->
     <fieldType name="rand" class="solr.RandomSortField" omitNorms="true"/>
     <!-- *** This fieldType is used by Sunspot! *** -->
-    <fieldType name="project_description" class="solr.TextField" omitNorms="false">
-      <analyzer type="index">
-        <tokenizer class="org.wltea.analyzer.solr.IKTokenizerFactory" useSmart ="false"/>
-        <filter class="solr.StandardFilterFactory"/>
-        <filter class="solr.LowerCaseFilterFactory"/>
+        <fieldType name="project_description" class="solr.TextField" omitNorms="false">
+      <analyzer type="index" class="org.wltea.analyzer.lucene.IKAnalyzer">
+        <!-- <tokenizer /> -->
+        <!-- <filter class="solr.StandardFilterFactory"/> -->
+        <!-- <filter class="solr.LowerCaseFilterFactory"/> -->
       </analyzer>
   
-      <analyzer type="query">
-        <tokenizer class="org.wltea.analyzer.solr.IKTokenizerFactory" useSmart ="false"/>
-        <filter class="solr.StandardFilterFactory"/>
-        <filter class="solr.LowerCaseFilterFactory"/>
+      <analyzer type="query" class="org.wltea.analyzer.lucene.IKAnalyzer">
+        <!-- <tokenizer class="org.wltea.analyzer.lucene.IKAnalyzer"/> -->
+        <!-- <filter class="solr.StandardFilterFactory"/> -->
+        <!-- <filter class="solr.LowerCaseFilterFactory"/> -->
       </analyzer>
     </fieldType>
 
@@ -285,7 +285,11 @@
     <dynamicField name="*_llm" stored="false" type="location" multiValued="true" indexed="true"/>
     <dynamicField name="*_lls" stored="true" type="location" multiValued="false" indexed="true"/>
     <dynamicField name="*_llms" stored="true" type="location" multiValued="true" indexed="true"/>
+    
+    <!-- required by Solr 4 -->
+    <field name="_version_" type="string" indexed="true" stored="true" multiValued="false" />
   </fields>
+  
   <!-- Field to use to determine and enforce document uniqueness.
       Unless this field is marked with required="false", it will be a required field
    -->

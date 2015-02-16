@@ -7,7 +7,7 @@
 <% content_for :head do %>
   <%= stylesheet_link_tag "main", media: "all" %>
   <%= stylesheet_link_tag "panel", media: "all" %>
-  <% if flash[:notice]==:login%>
+  <% if true||flash[:notice]==:login%>
   <script type="text/javascript">
   $(function(){
     $('#panel').css({"display":"none"});
@@ -32,7 +32,7 @@
 <% end %>
 
 <% content_for :main_content do %>
-  <% if flash[:notice]==:login%>
+  <% if true||flash[:notice]==:login%>
     <div class="jumbotron" id="welcome-jumbotron">
       <h3><%= @user.uid %></h3>
       <h1>欢迎回来!</h1>

@@ -14,13 +14,17 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
-/log/*.log.lck
+/log/*.log.*
 /tmp
 
 Gemfile.lock
 
 # Ignore solr temp file
-/solr/pids
+/solr/*
+!/solr/classes
+!/solr/conf
+!/solr/lib
+!/solr/solr.xml
 
 
 /tools/spiders/*.log

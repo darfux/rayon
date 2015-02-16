@@ -1,4 +1,4 @@
-RayonPre::Application.routes.draw do
+Rails.application.routes.draw do
   get "research_directions/create"
   get "research_directions/destroy"
   root to: 'sessions#new'
@@ -40,9 +40,6 @@ RayonPre::Application.routes.draw do
     post 'login' => :create
     delete 'logout' => :destroy
   end
-
-
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -83,7 +80,7 @@ RayonPre::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
