@@ -30,9 +30,10 @@ class Project < ActiveRecord::Base
   end
 
   def participation(user)
+    user = ProjectUser.where(user_id: user.id, project_id: self.id).first
+    return "" unless user
     ParticipationType.find(
-        ProjectUser.where(user_id: user.id, project_id: self.id
-            ).first.participation_type_id
+      user.participation_type_id
                 ).name
   end
 

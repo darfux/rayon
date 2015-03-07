@@ -6,7 +6,7 @@
         <%= f.text_field :name, class: :"form-control", placeholder: @user.name, required: true, autofocus: true%>
       </div>
     </div>
-    <% unless  @user.persisted? %>
+    <% unless @user.persisted? %>
       
     <div class="form-group">
       <label for="name" class="col-sm-2 control-label">密码</label>
@@ -25,6 +25,12 @@
       <label for="name" class="col-sm-2 control-label">职称</label>
       <div class="col-sm-4">
         <%= f.select :title_id, Title.all.collect {|t| [t.name, t.id]}, {},{class: :"form-control", required: true, autofocus: false}%>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="name" class="col-sm-2 control-label">email</label>
+      <div class="col-sm-4">
+        <%= f.email_field :email, {class: :"form-control"}%>
       </div>
     </div>
     <div class="form-group">

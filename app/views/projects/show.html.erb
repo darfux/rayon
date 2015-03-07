@@ -17,6 +17,7 @@
     <div class="col-md-12">
       <div class="col-md-6">
         <% project_info.each do |dt, dd| %>
+          <% next if dd.empty? %>
           <%= sanitize gen_li(dt, dd) %>
         <% end %>
       </div>
