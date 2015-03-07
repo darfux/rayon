@@ -35,7 +35,7 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-    @user.uid = User.last.id + 23333
+    @user.uid = (User.try(:last).try(:id) || 0)+ 23333
     respond_to do |format|
       if @user.save
         session[:user_id] = @user.id
