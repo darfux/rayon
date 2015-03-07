@@ -3,7 +3,7 @@ class Project < ActiveRecord::Base
   has_many :users, through: :project_users
   belongs_to :source 
   belongs_to :project_type
-  validates_presence_of :name#, :project_type_id, :project_state_id, :source_id
+  validates_presence_of :name, :project_type_id, :project_state_id, :source_id
 
 
   searchable do
