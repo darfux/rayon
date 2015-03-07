@@ -36,8 +36,8 @@ module ProjectsHelper
 	# end
 
   def get_source_select
-    selects = []
-    Source.all.each {|source| selects<<[source.name, source.id.to_i]}
+    selects = {}
+    Source.all.each {|source| selects.merge({source.name => source.id.to_i}) }
     selects
   end
 
