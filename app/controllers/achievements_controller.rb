@@ -13,7 +13,7 @@ class AchievementsController < ApplicationController
   # GET /achievements/1
   # GET /achievements/1.json
   def show
-    @back_link = @@manage_page if flash[:burst_back]
+    # @back_link = @@manage_page if flash[:burst_back]
     respond_to do |format|
       format.html
       format.js
@@ -87,17 +87,17 @@ class AchievementsController < ApplicationController
   end
 
   def manage_list
-    @@manage_page = achievement_manage_list_path
+    # @@manage_page = achievement_manage_list_path
     render "shared/manage_list"
   end  
 
   def manage_tag
-    @@manage_page = achievement_manage_tag_path
+    # @@manage_page = achievement_manage_tag_path
     render "shared/manage_tag"
   end
 
   private
-    @@manage_page = AchievementsController.instance_method(:achievement_manage_list_path)
+    # @@manage_page = AchievementsController.instance_method(:achievement_manage_list_path)
     # Use callbacks to share common setup or constraints between actions.
     def set_meta
       @header_meta = "成果管理"

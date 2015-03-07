@@ -18,7 +18,6 @@ doc = Nokogiri::HTML(people)
   content.encode!('utf-8')
   doc = Nokogiri::HTML(content)
   puts (doc/'table')[50].inner_text
-  break
-end
+  breakend
 
 exit

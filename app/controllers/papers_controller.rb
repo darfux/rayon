@@ -13,7 +13,7 @@ class PapersController < ApplicationController
   # GET /papers/1
   # GET /papers/1.json
   def show
-    @back_link = @@manage_page if flash[:burst_back]
+    # @back_link = @@manage_page if flash[:burst_back]
     respond_to do |format|
       format.html
       format.js
@@ -91,17 +91,17 @@ class PapersController < ApplicationController
   end
 
   def manage_list
-    @@manage_page = paper_manage_list_path
+    # @@manage_page = paper_manage_list_path
     render "shared/manage_list"
   end  
 
   def manage_tag
-    @@manage_page = paper_manage_tag_path
+    # @@manage_page = paper_manage_tag_path
     render "shared/manage_tag"
   end
 
   private
-    @@manage_page = PapersController.instance_method(:paper_manage_list_path)
+    # @@manage_page = PapersController.instance_method(:paper_manage_list_path)
     # Use callbacks to share common setup or constraints between actions.
 
     def set_meta

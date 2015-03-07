@@ -46,3 +46,5 @@ gem 'sunspot_solr', '~> 2.1.1'# optional pre-packaged Solr distribution for use 
 gem 'awesome_print'
 
 gem 'quiet_assets', group: :development
+
+gem 'thin'
