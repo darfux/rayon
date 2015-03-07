@@ -41,6 +41,7 @@ class PapersController < ApplicationController
   # POST /papers.json
   def create
     @paper = Paper.new(paper_params)
+    @paper.publish.empty? ?  @paper.publish= "未知" : nil
     respond_to do |format|
       begin
         Paper.transaction do
@@ -48,7 +49,6 @@ class PapersController < ApplicationController
           @paper.paper_users.create!({user_id: @user.id,
             user_own_type_id: params[:user_own_type_id]})
         end
-        @back_link = @@manage_page
         format.html {render action: 'show'}
         format.js {render action: 'show'}
       rescue Exception => e

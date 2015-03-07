@@ -49,7 +49,6 @@ class ProjectsController < ApplicationController
           @project.project_users.create!({user_id: @user.id,
             participation_type_id: params[:participation_type_id]})
         end
-        @back_link = @@manage_page
         format.html {render action: 'show'}
         format.js {render action: 'show'}
       rescue Exception => e

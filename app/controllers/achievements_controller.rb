@@ -47,7 +47,6 @@ class AchievementsController < ApplicationController
         Achievement.transaction do
           @achievement.save!
         end
-        @back_link = @@manage_page
         format.html {render action: 'show'}
         format.js {render action: 'show'}
       rescue Exception => e
