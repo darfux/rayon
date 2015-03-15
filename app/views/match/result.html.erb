@@ -83,13 +83,13 @@
         <div class="result-elm" id="result-elm-expert" data-toggle="modal" data-target="#expert-detail">
         <span class="glyphicon glyphicon-refresh"></span>
           <div class="result-content">
-            <p>张金</p>
+            <p><%= @expert.name %></p>
           </div>
           <hr/>
           <div class="result-tag">
-            <li>物联网</li>
-            <li>云计算</li>
-            <li>数字版权管理</li>
+            <% @expert.research_directions.sort_by{ |r| r.name}[0..2].each do |r| %>
+            <li><%= r.name %></li>
+            <% end %>
           </div>
           <div class="result-title">
             专家
@@ -123,44 +123,48 @@ $(function(){
       <div class="modal-body">
         <div>
           <a href="#" class="thumbnail">
-            <img src="http://cc.nankai.edu.cn/Teachers/Images/zhangjin.jpg" data-src="holder.js/40x40" alt="...">
+            <img src="" data-src="holder.js/40x40" alt="...">
           </a>
           <!-- <img src="http://cc.nankai.edu.cn/Teachers/Images/zhangjin.jpg" class="img-responsive" alt="Responsive image"> -->
         </div>
        <!-- modal content -->
         <dl class='dl-horizontal'>
           <dt>专家</dt>
-          <dd>张金</dd>
+          <dd><%= @expert.name %></dd>
         </dl>
         <dl class='dl-horizontal'>
           <dt>单位</dt>
-          <dd>南开大学</dd>
+          <dd><%# @expert.unit %></dd>
         </dl>
         <dl class='dl-horizontal'>
           <dt>职称</dt>
-          <dd>副教授</dd>
+          <dd><%= @expert.title.try(:name) %></dd>
         </dl>
          <dl class='dl-horizontal'>
           <dt>办公电话</dt>
-          <dd>022-23506332</dd>
+          <dd><%= @expert.tel %></dd>
         </dl>
-        <dl class='dl-horizontal'>
+<!--         <dl class='dl-horizontal'>
           <dt>办公地点</dt>
           <dd>南开大学伯苓楼D304</dd>
-        </dl>      
+        </dl>    -->   
         <dl class='dl-horizontal'>
           <dt>邮箱</dt>
-          <dd>nkzhangjin@nankai.edu.cn</dd>
+          <dd><%= @expert.email %></dd>
         </dl>
 
         <div id="detail-qrcode">
-          <img src="./img/qrcode.png" class="img-responsive" alt="Responsive image">
+          <img src="" class="img-responsive" alt="Responsive image">
         </div>
         <!-- modal content end -->
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">查看更多</button>
+        <% if @expert.persisted? %>
+          <%= link_to user_path(@expert) do  %>
+          <button type="button" class="btn btn-primary">查看更多</button>
+          <% end %>
+        <% end %>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

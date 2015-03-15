@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150307120311) do
+ActiveRecord::Schema.define(version: 20150315142307) do
 
   create_table "achievements", force: true do |t|
     t.string   "title"
@@ -100,6 +100,13 @@ ActiveRecord::Schema.define(version: 20150307120311) do
     t.datetime "updated_at"
   end
 
+  create_table "units", force: true do |t|
+    t.string   "name"
+    t.text     "detail"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "user_own_types", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -116,6 +123,7 @@ ActiveRecord::Schema.define(version: 20150307120311) do
     t.integer  "title_id"
     t.text     "introduction"
     t.string   "tel"
+    t.integer  "unit_id"
   end
 
 end

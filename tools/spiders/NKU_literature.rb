@@ -1,7 +1,7 @@
 require 'nokogiri'
 require 'net/http'
 require 'yaml'
-require 'Pathname'
+require 'pathname'
 
 filename = Pathname.new(__FILE__).basename(".rb")
 $log = File.open("#{filename}.log", "w")

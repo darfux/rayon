@@ -8,8 +8,8 @@
 /.bundle
 
 # Ignore the default SQLite database.
-# /db/*.sqlite3
-# /db/*.sqlite3-journal
+/db/*.sqlite3
+/db/*.sqlite3-journal
 /db/test.sqlite3
 
 # Ignore all logfiles and tempfiles.
@@ -30,3 +30,7 @@ Gemfile.lock
 /tools/spiders/*.log
 /tools/spiders/*.yml
 *.bak
+
+
+
+

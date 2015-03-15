@@ -10,6 +10,7 @@ class MatchController < ApplicationController
   end
 
   def match
+    @user = User.find(session[:user_id])
     session[:step] = nil
     respond_to do |format| 
       format.html
@@ -27,15 +28,22 @@ class MatchController < ApplicationController
   end
 
   def result
-    
+    @expert = (
+      if session[:expert_id]==-1
+        User.new(name: "无匹配") 
+      else 
+        User.find(session[:expert_id])
+      end
+    )
   end
   
 private
   def match_client
+    @user = User.find(session[:user_id])
     if session[:step]==-1|| session[:step]==nil
       session[:step] = 0
     else
-      return {status: NO_CHANGE} if rand(10)>4
+      return {status: NO_CHANGE} if rand(10)>8
     end
     case session[:step]
     when 0
@@ -43,6 +51,14 @@ private
       return {status: CHANGE, loaded: [], loading: [0], rate: 0}
     when 1
       session[:step] = 2
+      session[:expert_id] = (
+        expert = @user.relate_expert.sort_by{ |k,v| v }.last
+        if expert
+          expert[0].id
+        else
+          -1
+        end
+      )
       return {status: CHANGE, loaded: [0], loading: [1], rate: 25}
     when 2
       session[:step] = 3
