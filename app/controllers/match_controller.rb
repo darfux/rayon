@@ -28,6 +28,7 @@ class MatchController < ApplicationController
   end
 
   def result
+    @user = User.find(session[:user_id])
     @expert = (
       if session[:expert_id]==-1
         User.new(name: "无匹配") 
@@ -35,9 +36,32 @@ class MatchController < ApplicationController
         User.find(session[:expert_id])
       end
     )
+    @achievement = get_matched(:achievement)
+    @paper = get_matched(:paper)
+    @project = get_matched(:project)
   end
   
 private
+  def get_matched(name)
+    (
+    if session["#{name}_id".to_sym]==-1
+      name.to_s.classify.constantize.new(name: "无匹配") 
+    else 
+      name.to_s.classify.constantize.find(session["#{name}_id".to_sym])
+    end
+    )
+  end
+
+  def match_relate(klass)
+    (
+        tmp = @user.relate(klass)
+        if tmp
+          tmp[0].id
+        else
+          -1
+        end
+    )
+  end
   def match_client
     @user = User.find(session[:user_id])
     if session[:step]==-1|| session[:step]==nil
@@ -48,6 +72,7 @@ private
     case session[:step]
     when 0
       session[:step] = 1
+      session[:achievement_id] = match_relate(Achievement)
       return {status: CHANGE, loaded: [], loading: [0], rate: 0}
     when 1
       session[:step] = 2
@@ -62,9 +87,11 @@ private
       return {status: CHANGE, loaded: [0], loading: [1], rate: 25}
     when 2
       session[:step] = 3
+      session[:paper_id] = match_relate(Paper)
       return {status: CHANGE, loaded: [0,1], loading: [2], rate: 50}
     when 3
       session[:step] = 4
+      session[:project_id] = match_relate(Project)
       return {status: CHANGE, loaded: [0,1,2], loading: [3], rate: 75}
     when 4
       session[:step] = -1

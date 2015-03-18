@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :research_directions
   
   belongs_to :title
-  belongs_to :units
+  belongs_to :unit
 
   validates :uid, :presence => true, :uniqueness => true
   validates :password, :presence => true, :on => :create
@@ -38,6 +38,26 @@ class User < ActiveRecord::Base
     result
   end
 
- 	cattr_reader :search_show_attrs
+  def relate(klass)
+    result = {}
+    research_directions.each do |rd|
+      tmp = rd.get_relate(klass)
+      tmp.each do |p|
+        if result[p]
+          result[p] += 1
+        else
+          result[p] = 1
+        end
+      end
+    end
+    result.sort_by{ |k,v| v }.last
+  end
+
+  def unit_name
+    unit.try(:name)
+  end
+  
+  cattr_reader :search_show_attrs
   @@search_show_attrs = [["姓名", :name]]
 end
+

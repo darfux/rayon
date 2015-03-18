@@ -1,4 +1,5 @@
 class Paper < ActiveRecord::Base
+  include Tagable
   has_many :paper_users, :dependent => :destroy
   has_many :users, through: :paper_users
 
@@ -14,6 +15,8 @@ class Paper < ActiveRecord::Base
             ).first.user_own_type_id
                 ).name
   end
+
+
   def name
     self.title
   end

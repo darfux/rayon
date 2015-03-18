@@ -9,17 +9,18 @@
     <div class="col-md-12">
       <div class="col-md-3 result-block">
         <div class="progress">
-            <div class="progress-bar progress-bar-danger" aria-valuetransitiongoal="67"></div>
+            <div class="progress-bar progress-bar-danger" aria-valuetransitiongoal="50"></div>
         </div>
         <div class="result-elm" id="result-elm-achievement">
           <span class="glyphicon glyphicon-refresh"></span>
           <div class="result-content">
-            <p>分布式信息管理系统</p>
+            <p><%= @achievement.name %></p>
           </div>
           <hr/>
           <div class="result-tag">
-            <li>分布式</li>
-            <li>信息管理</li>
+            <% @achievement.relate_tags(@user).each do |tag| %>
+            <li><%= tag %></li>
+            <% end %>
           </div>
           <div class="result-title">
             成果
@@ -28,16 +29,18 @@
       </div>      
       <div class="col-md-3 result-block">
         <div class="progress">
-            <div class="progress-bar progress-bar-success" aria-valuetransitiongoal="70"></div>
+            <div class="progress-bar progress-bar-success" aria-valuetransitiongoal="50"></div>
         </div>
         <div class="result-elm" id="result-elm-paper">
           <span class="glyphicon glyphicon-refresh"></span>
           <div class="result-content">
-            <p>基于云计算的企业竞争情报服务模式研究</p>
+            <p><%= @paper.name %></p>
           </div>
           <hr/>
           <div class="result-tag">
-            <li>云计算</li>
+            <% @paper.relate_tags(@user).each do |tag| %>
+            <li><%= tag %></li>
+            <% end %>
           </div>
           <div class="result-title">
             文献
@@ -59,17 +62,18 @@
       </div> -->      
       <div class="col-md-3 result-block">
         <div class="progress">
-            <div class="progress-bar progress-bar-info" aria-valuetransitiongoal="77"></div>
+            <div class="progress-bar progress-bar-info" aria-valuetransitiongoal="50"></div>
         </div>
         <div class="result-elm" id="result-elm-project">
           <span class="glyphicon glyphicon-refresh"></span>
           <div class="result-content">
-            <p>基于虚拟化云计算平台的若干安全问题的研究</p>
+            <p><%= @project.name %></p>
           </div>
           <hr/>
           <div class="result-tag">
-            <li>云计算</li>
-            <li>虚拟化</li>
+            <% @project.relate_tags(@user).each do |tag| %>
+            <li><%= tag %></li>
+            <% end %>
           </div>
           <div class="result-title">
             项目
@@ -78,7 +82,7 @@
       </div>      
       <div class="col-md-3 result-block">
         <div class="progress">
-            <div class="progress-bar progress-bar-warning" aria-valuetransitiongoal="87"></div>
+            <div class="progress-bar progress-bar-warning" aria-valuetransitiongoal="50"></div>
         </div>
         <div class="result-elm" id="result-elm-expert" data-toggle="modal" data-target="#expert-detail">
         <span class="glyphicon glyphicon-refresh"></span>
@@ -134,7 +138,7 @@ $(function(){
         </dl>
         <dl class='dl-horizontal'>
           <dt>单位</dt>
-          <dd><%# @expert.unit %></dd>
+          <dd><%= @expert.unit_name %></dd>
         </dl>
         <dl class='dl-horizontal'>
           <dt>职称</dt>

@@ -1,4 +1,5 @@
 class Project < ActiveRecord::Base
+  include Tagable
   has_many :project_users, :dependent => :destroy
   has_many :users, through: :project_users
   belongs_to :source 
